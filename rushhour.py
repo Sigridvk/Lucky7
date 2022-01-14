@@ -7,6 +7,7 @@
 
 import argparse
 import csv
+import math
 
 
 class rushhour():
@@ -133,7 +134,21 @@ class rushhour():
         """
         for row in board:
             print(row)
-        print()       
+        print()
+
+    def solved(self, board):
+        """
+        Checks whether the current board is the solution.
+        If the space next to the exit == 'X' the problem is solved.
+        """
+
+        # Calculate the coordinates of the square before the exit as index
+        exit_row = math.floor((self.size_board+1)/2) - 1
+        exit_col = self.size_board-1
+
+        if board[exit_row][exit_col] == 'X':
+            print("You solved the puzzle! 1")
+            return True
 
 
 if __name__ == "__main__":
