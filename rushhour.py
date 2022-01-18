@@ -13,7 +13,7 @@ import turtle
 import time
 
 
-# dit heb ik vrijwel allemaal gekopieerd van internet
+# dit heb ik vrijwel allemaal
 window = turtle.Screen()
 myPen = turtle.Turtle()
 window.tracer(False)
@@ -174,9 +174,9 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        for row in board:
-            print(row)
-        print()
+        # for row in board:
+        #     print(row)
+        # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
         fill_grid(30, 6, board)
@@ -234,49 +234,12 @@ if __name__ == "__main__":
         step = move_game[1]
         car = move_game[0]
         
-        print(step, car)
+        print(f"move_game {move_game}")
+        # print(step, car)
         if step == 0:
             pass
         else:
             rushhourgame.move(car, step)
-
-    # A couple of hardcoded moves and boardprints to check the program (officially not part of the code)
-    # Move 1
-    # random_element = random_car(rushhourgame.dict)
-    # print(rushhourgame.dict)
-    print()
-
-
-
-    # test1 = check_move('A', rushhourgame.dict, board)
-    # test1 = []
-    # print(random_move(test1))
-    # print(test1)
-    # print()
-
-
-    # rushhourgame.move('A', -1)
-
-    # Create and print board
-    # board = rushhourgame.create_board()
-    # rushhourgame.display_board(board)
-
-    # Move 2
-    # rushhourgame.move('C', -1)
-
-    # Create and print board
-    # board = rushhourgame.create_board()
-    # rushhourgame.display_board(board)
-
-    # Move 3
-    # rushhourgame.move('G', 2)       
-
-    # Create and print board
-    # board = rushhourgame.create_board()
-    # rushhourgame.display_board(board)
-
-    # test = check_move('X', rushhourgame.dict, board)
-    # print(test)
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
