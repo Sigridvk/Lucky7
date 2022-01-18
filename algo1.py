@@ -15,6 +15,8 @@ def check_move(car, cars_dict, board):
 
     # Check orientation
     if cars_dict[car]['orientation'] == 'H':
+
+        print(car)
         
         # Define coordinates spot on the right side of the vehicle
         row = cars_dict[car]['row'] - 1
@@ -52,43 +54,56 @@ def check_move(car, cars_dict, board):
                 break
 
 
-    #  # Check orientation
-    # if cars_dict[car]['orientation'] == 'V':
+     # Check orientation
+    if cars_dict[car]['orientation'] == 'V':
+
+        print(car)
+
         
-    #     # Define coordinates spot on the above side of the vehicle
-    #     row_up = cars_dict[car]['row'] - 1
-    #     column = cars_dict[car]['col'] - 1
+        # Define coordinates spot on the above side of the vehicle
+        row_up = cars_dict[car]['row'] - 2
+        column = cars_dict[car]['col'] - 1
 
-    #     check_list = board[row_up:][column]
+        print(f"row_up {row_up}")
+        print(column)
 
-    #     for i in range(len(check_list) - 1, -1, -1):
+        if (row_up >=  0):
 
-    #         # Check whether spot right from vehicle is empty
-    #         if board[i][column] == '':
+            # check_list = board[:row_up][column]
 
-    #             # moves_list.append(board[row_right][column_right + i])
+            # for i in range(row_up):
+            for i in range(row_up, -1, -1):
 
-    #             moves_list.append(i - row_up)
+                # Check whether spot right from vehicle is empty
+                if board[i][column] == '':
 
-    #         else:
-    #             break
+                    # moves_list.append(board[row_right][column_right + i])
 
-    #     # Define coordinates spot on the down side of the vehicle
-    #     row_down = cars_dict[car]['row'] + cars_dict[car]['length'] - 1
+                    moves_list.append(row_up - i)
 
-    #     check_list = board[:row_down][column]
+                else:
+                    break
 
-    #     for i in range(len(check_list)):
+        # Define coordinates spot on the down side of the vehicle
+        row_down = cars_dict[car]['row'] + cars_dict[car]['length'] - 1
 
-    #         # Check whether spot down from vehicle is empty
-    #         if board[row_down + i][column] == '':
+        if (row_down < len(board)):
+            
 
-    #             # moves_list.append(board[row_right][column_right + i])
+            print(f"rowdown {row_down}")
 
-    #             moves_list.append(i + 1)
 
-    #         else:
-    #             break
+            # check_list = board[row_down:][column]
+
+            for i in range(row_down, len(board), 1):
+
+                # Check whether spot down from vehicle is empty
+                if board[i][column] == '':
+
+                    moves_list.append( -1 * (i - row_down))
+
+                else:
+                    break
 
     print(moves_list)
     print(car)

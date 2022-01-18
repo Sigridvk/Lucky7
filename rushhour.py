@@ -158,9 +158,11 @@ if __name__ == "__main__":
 
         if rushhourgame.solved(board):
             break
-
-        step = algo1.random_algorithm(rushhourgame.dict, board)[1]
-        car = algo1.random_algorithm(rushhourgame.dict, board)[0]
+        
+        move_game = algo1.random_algorithm(rushhourgame.dict, board)
+        step = move_game[1]
+        car = move_game[0]
+        
         print(step, car)
         if step == 0:
             pass
