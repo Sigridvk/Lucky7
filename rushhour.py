@@ -8,7 +8,7 @@
 import argparse
 import csv
 import math
-
+import algo1
 
 class rushhour():
 
@@ -80,28 +80,6 @@ class rushhour():
         
             return self._board
 
-
-    # def check_move(self, car):
-    #     """
-    #     """
-
-    #     # Check orientation
-    #     if self.dict[car]['orientation'] == 'H':
-            
-    #         # Define coordinates spot on the right side of the vehicle
-    #         row_right = self.dict[car]['row']
-    #         column_right = self.dict[car]['col'] + self.dict[car]['length']
-
-    #         # Check whether spot right from vehicle is empty
-    #         if self._board[row_right][column_right] == '':
-
-    #             # 'Move' car to the right, by emptying spot 
-    #             self._board[self.dict[car]['row']][self.dict[car]['col']] = ''
-
-    #             # Redefine coordinates vehicle
-    #             self.dict[car]['row'] = row_right
-    #             self.dict[car]['col'] += 1
-        
     
     def move(self, car, steps):
         """
@@ -166,37 +144,65 @@ if __name__ == "__main__":
     # Run main with provided arguments
     rushhourgame = rushhour(args.output, args.game)
 
-    # Initialize begin state board
-    board = rushhourgame.create_board()
-    
+    # # Initialize begin state board
+    # board = rushhourgame.create_board()
+    # i = 1
     # Infinite loop to play game, breaks when solution is found
     while True:
 
+        # Initialize begin state board
+        board = rushhourgame.create_board()
+
         # Display current state board (in terminal)
         rushhourgame.display_board(board)
-        break
+
+        if rushhourgame.solved(board):
+            break
+
+        step = algo1.random_algorithm(rushhourgame.dict, board)[1]
+        car = algo1.random_algorithm(rushhourgame.dict, board)[0]
+        print(step, car)
+        if step == 0:
+            pass
+        else:
+            rushhourgame.move(car, step)
 
     # A couple of hardcoded moves and boardprints to check the program (officially not part of the code)
     # Move 1
-    rushhourgame.move('A', -1)
+    # random_element = random_car(rushhourgame.dict)
+    # print(rushhourgame.dict)
+    print()
+    # print(random_element[0][0])
+
+    # test1 = check_move('A', rushhourgame.dict, board)
+    # test1 = []
+    # print(random_move(test1))
+    # print(test1)
+    # print()
+
+
+    # rushhourgame.move('A', -1)
 
     # Create and print board
-    board = rushhourgame.create_board()
-    rushhourgame.display_board(board)
+    # board = rushhourgame.create_board()
+    # rushhourgame.display_board(board)
 
     # Move 2
-    rushhourgame.move('C', -1)
+    # rushhourgame.move('C', -1)
 
     # Create and print board
-    board = rushhourgame.create_board()
-    rushhourgame.display_board(board)
+    # board = rushhourgame.create_board()
+    # rushhourgame.display_board(board)
 
     # Move 3
-    rushhourgame.move('G', 2)       
+    # rushhourgame.move('G', 2)       
 
     # Create and print board
-    board = rushhourgame.create_board()
-    rushhourgame.display_board(board)
+    # board = rushhourgame.create_board()
+    # rushhourgame.display_board(board)
+
+    # test = check_move('X', rushhourgame.dict, board)
+    # print(test)
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
