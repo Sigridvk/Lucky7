@@ -7,11 +7,13 @@
 
 import argparse
 import csv
+from itertools import count
 import math
 import algo1
 import turtle
 import time
 
+solved_games = []
 
 # dit heb ik vrijwel allemaal
 window = turtle.Screen()
@@ -179,8 +181,8 @@ class rushhour():
         # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        fill_grid(30, 6, board)
-        window.update()
+        # fill_grid(30, 6, board)
+        # window.update()
 
         # time the screen delays in seconds
         # time.sleep(0.5)
@@ -212,34 +214,39 @@ if __name__ == "__main__":
     # Read arguments from command line
     args = parser.parse_args()
 
-    # Run main with provided arguments
-    rushhourgame = rushhour(args.output, args.game)
+    for i in range(10):
+        counter = 0
+        # Run main with provided arguments
+        rushhourgame = rushhour(args.output, args.game)
 
-    # # Initialize begin state board
-    # board = rushhourgame.create_board()
-    # i = 1
-    # Infinite loop to play game, breaks when solution is found
-    while True:
+        # # Initialize begin state board
+        # board = rushhourgame.create_board()
+        # i = 1
+        # Infinite loop to play game, breaks when solution is found
+        while True:
 
-        # Initialize begin state board
-        board = rushhourgame.create_board()
+            # Initialize begin state board
+            board = rushhourgame.create_board()
 
-        # Display current state board (in terminal)
-        rushhourgame.display_board(board)
+            # Display current state board (in terminal)
+            rushhourgame.display_board(board)
 
-        if rushhourgame.solved(board):
-            break
-        
-        move_game = algo1.random_algorithm(rushhourgame.dict, board)
-        step = move_game[1]
-        car = move_game[0]
-        
-        print(f"move_game {move_game}")
-        # print(step, car)
-        if step == 0:
-            pass
-        else:
-            rushhourgame.move(car, step)
+            if rushhourgame.solved(board):
+                solved_games.append(counter)
+                print(solved_games)
+                break
+            
+            move_game = algo1.random_algorithm(rushhourgame.dict, board)
+            step = move_game[1]
+            car = move_game[0]
+            
+            # print(f"move_game {move_game}")
+            # print(step, car)
+            if step == 0:
+                pass
+            else:
+                rushhourgame.move(car, step)
+                counter += 1
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
@@ -247,4 +254,9 @@ if __name__ == "__main__":
         csv_out.writerow(['car','move'])
         for row in rushhourgame.moves:
             csv_out.writerow(row)
-
+    
+    # Write total steps to an output file
+    with open('output/output_games_steps.csv','w') as out2:
+        write = csv.writer(out2)
+        for val in solved_games:
+            write.writerow([val])
