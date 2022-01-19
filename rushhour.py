@@ -151,7 +151,7 @@ class rushhour():
 
         if board[exit_row][exit_col] == 'X':
             # self.display_board(board)
-            print("You solved the puzzle! 1")
+            # print("You solved the puzzle! 1")
             return True
 
 
@@ -214,6 +214,8 @@ if __name__ == "__main__":
 
     plt.hist(solved_games, bins=10, range=(0, 1000))
     plt.show()
+
+    
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
