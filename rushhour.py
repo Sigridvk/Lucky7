@@ -12,7 +12,7 @@ import csv
 # from itertools import count
 import math
 import algo1
-import turtle
+# import turtle
 import time
 from sys import argv
 import draw
@@ -23,8 +23,8 @@ solved_games = []
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-window = turtle.Screen()
-myPen = turtle.Turtle()
+# window = turtle.Screen()
+# myPen = turtle.Turtle()
 
 
 class rushhour():
@@ -127,18 +127,17 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
+        # window = turtle.Screen()
+        # myPen = turtle.Turtle()
         # show the board in the terminal with lists in a list
         # for row in board:
         #     print(row)
         # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        # fill_grid(30, 6, board)
-        draw.draw(board, myPen, window, 1)
-        window.update()
+        # draw.draw(board, myPen, window, 1)
+        # window.update()
 
-        # time the screen delays in seconds
-        time.sleep(0)
 
     def solved(self, board):
         """
@@ -151,7 +150,7 @@ class rushhour():
         exit_col = self.size_board-1
 
         if board[exit_row][exit_col] == 'X':
-            self.display_board(board)
+            # self.display_board(board)
             print("You solved the puzzle! 1")
             return True
 
@@ -184,7 +183,7 @@ if __name__ == "__main__":
         board = rushhourgame.create_board()
 
         # Display current state board (in terminal)
-        rushhourgame.display_board(board)
+        # rushhourgame.display_board(board)
 
         # Infinite loop to play game, breaks when solution is found
         while True:
@@ -229,4 +228,4 @@ if __name__ == "__main__":
         for val in solved_games:
             write.writerow([val])
     
-    window.exitonclick()
+    # window.exitonclick()
