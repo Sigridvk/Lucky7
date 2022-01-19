@@ -9,6 +9,7 @@
 
 import argparse
 import csv
+import string
 # from itertools import count
 import math
 import algo1
@@ -43,8 +44,10 @@ class rushhour():
         # Define game file
         file = f'gameboards/{game}.csv'
 
+        index_x = game.find('x')
+
         # Size grid is defined by 8th character of the gamename, example: Rushhour6x6_1
-        self.size_board = int(game[8])
+        self.size_board = int(game[8:index_x])
 
         reader = csv.reader(open(file))
         
@@ -151,7 +154,7 @@ class rushhour():
 
         if board[exit_row][exit_col] == 'X':
             # self.display_board(board)
-            # print("You solved the puzzle! 1")
+            print("You solved the puzzle! 1")
             return True
 
 
@@ -215,7 +218,6 @@ if __name__ == "__main__":
     plt.hist(solved_games, bins=10, range=(0, 1000))
     plt.show()
 
-    
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
