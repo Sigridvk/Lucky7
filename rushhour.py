@@ -15,6 +15,7 @@ import algo1
 import turtle
 import time
 from sys import argv
+import draw
 import matplotlib.pyplot as plt
 
 # Global variable for the total steps per solved game
@@ -24,62 +25,7 @@ solved_games = []
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
 window = turtle.Screen()
 myPen = turtle.Turtle()
-window.tracer(False)
-myPen.color("#000000")
-topLeft_x=-150
-topLeft_y=150
-colors = ['#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000']
 
-
-def fill_grid(width, grid_length, board):
-    """
-    Calls the function square to draw all the seperate squares of the grid
-    """
-    myPen.penup()
-    myPen.setheading(0)
-    myPen.goto(topLeft_x,topLeft_y-width)
-    myPen.pendown()
-    for row in range (0,grid_length):
-        for column in range (0,grid_length):
-            
-            # If the carletter is X, the car is red
-            if board[row][column]=='X':
-                square(width, "red")
-
-            # If there is a different car, it chooses a color from the list colors 
-            elif board[row][column]!='':
-                index = ord(board[row][column]) - 65
-                square(width,colors[index])
-
-            # If there is no car, it draws a white square
-            else:
-                square(width, "white")
-    		  
-            myPen.penup()
-            myPen.forward(width)
-            myPen.pendown()
-        myPen.setheading(270) 
-        myPen.penup()
-        myPen.forward(width)
-        myPen.setheading(180) 
-        myPen.forward(width*grid_length)
-        myPen.setheading(0)
-        myPen.pendown()
-    myPen.penup()
-
-
-def square(width,color):
-    """
-    Draws one square in the grid with the given color
-    """
-    myPen.pendown()
-    myPen.fillcolor(color)
-    myPen.begin_fill()
-    for i in range(0,4):
-        myPen.forward(width)
-        myPen.left(90)
-    myPen.end_fill()
-    myPen.setheading(0)
 
 class rushhour():
 
@@ -187,7 +133,8 @@ class rushhour():
         # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        fill_grid(30, 6, board)
+        # fill_grid(30, 6, board)
+        draw.draw(board, myPen, window, 1)
         window.update()
 
         # time the screen delays in seconds
