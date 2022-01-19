@@ -3,19 +3,25 @@
 
  Programmeertheorie
  Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
+
+ Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]
 """
 
 import argparse
 import csv
-from itertools import count
+# from itertools import count
 import math
 import algo1
 import turtle
 import time
+from sys import argv
+import matplotlib.pyplot as plt
 
+# Global variable for the total steps per solved game
 solved_games = []
 
-# dit heb ik vrijwel allemaal
+# Variables to display the board in turtle
+# Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
 window = turtle.Screen()
 myPen = turtle.Turtle()
 window.tracer(False)
@@ -25,7 +31,6 @@ topLeft_y=150
 colors = ['#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000']
 
 
-    # print(random_element[0][0])
 def fill_grid(width, grid_length, board):
     """
     Calls the function square to draw all the seperate squares of the grid
@@ -176,16 +181,17 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
+        # show the board in the terminal with lists in a list
         # for row in board:
         #     print(row)
         # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        # fill_grid(30, 6, board)
-        # window.update()
+        fill_grid(30, 6, board)
+        window.update()
 
         # time the screen delays in seconds
-        # time.sleep(0.5)
+        time.sleep(0)
 
     def solved(self, board):
         """
@@ -198,30 +204,41 @@ class rushhour():
         exit_col = self.size_board-1
 
         if board[exit_row][exit_col] == 'X':
+            self.display_board(board)
             print("You solved the puzzle! 1")
             return True
 
 
 if __name__ == "__main__":
 
-    # Set-up parsing command line arguments
-    parser = argparse.ArgumentParser(description="")
+    # Create a command line argument parser
+    parser = argparse.ArgumentParser(description='Solve a rushhour game')
+    parser.add_argument("-g", "--game", type=str, help="gamefile name", required=True)
+    parser.add_argument("-o", "--output", help="output file (csv)", required=True)
+    parser.add_argument("-n","--runs", type=int, default=1, help="number of runs")
 
-    # Adding arguments
-    parser.add_argument("output", help="output file (csv)")
-    parser.add_argument("-g", "--game", type=str)
-
-    # Read arguments from command line
+    # Parse the command line arguments
     args = parser.parse_args()
 
-    for i in range(10):
+    # Check command line arguments
+    if len(argv) not in [5,7]:
+        print(len(argv))
+        print("Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]")
+        exit(1)
+
+    # Loop through algorithm n times
+    for i in range(args.runs):
         counter = 0
+
         # Run main with provided arguments
         rushhourgame = rushhour(args.output, args.game)
 
-        # # Initialize begin state board
-        # board = rushhourgame.create_board()
-        # i = 1
+        # Initialize begin state board
+        board = rushhourgame.create_board()
+
+        # Display current state board (in terminal)
+        rushhourgame.display_board(board)
+
         # Infinite loop to play game, breaks when solution is found
         while True:
 
@@ -229,24 +246,28 @@ if __name__ == "__main__":
             board = rushhourgame.create_board()
 
             # Display current state board (in terminal)
-            rushhourgame.display_board(board)
+            # rushhourgame.display_board(board)
 
+            # Check if the current game is solved, if so, break. Append total steps to list
+            # MISSCHIEN DEZE FUNCTIE VERPLAATSEN, WORDT NU OOK GECHECKT NA EEN STAP VAN 0
             if rushhourgame.solved(board):
                 solved_games.append(counter)
-                print(solved_games)
                 break
             
+            # Call first algorithm to decide which car to move
             move_game = algo1.random_algorithm(rushhourgame.dict, board)
             step = move_game[1]
             car = move_game[0]
-            
-            # print(f"move_game {move_game}")
-            # print(step, car)
+
+            # If the step-size is 0, begin again, else move that car
             if step == 0:
                 pass
             else:
                 rushhourgame.move(car, step)
                 counter += 1
+
+    plt.hist(solved_games, bins=10, range=(0, 1000))
+    plt.show()
 
     # Write moves to an output file
     with open('output/output_moves.csv','w') as out:
@@ -256,7 +277,9 @@ if __name__ == "__main__":
             csv_out.writerow(row)
     
     # Write total steps to an output file
-    with open('output/output_games_steps.csv','w') as out2:
+    with open(f'output/{args.output}','w') as out2:
         write = csv.writer(out2)
         for val in solved_games:
             write.writerow([val])
+    
+    window.exitonclick()
