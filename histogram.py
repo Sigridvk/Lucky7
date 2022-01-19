@@ -20,7 +20,7 @@ def histogram(input_file):
     graph1 = bin_counts.plot.bar()
     
     plt.xlabel("Steps"), plt.ylabel("Frequency"), plt.title("Frequency of Steps per Game")
-    plt.savefig('/Users/sigridvanklaveren/Documenten/Uva minor programmeren/Programmeertheorie/Lucky7/output/graphs/graph1', bbox_inches = 'tight')
+    plt.savefig('output/graphs/graph2', bbox_inches = 'tight')
     # plt.show()
 
 histogram("output/test3.csv")
