@@ -23,6 +23,11 @@ import matplotlib.pyplot as plt
 # Global variable for the total steps per solved game
 solved_games = []
 
+# Global variable for the game with smallest amount of steps
+smallest_amount_steps = None
+
+moves_smallest_game = []
+
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
 # window = turtle.Screen()
@@ -41,6 +46,7 @@ class rushhour():
 
         # List for moves of the vehicles
         self.moves = []
+        # self.moves_smallest_game = []
 
         # Define game file
         file = f'gameboards/{game}.csv'
@@ -222,13 +228,22 @@ if __name__ == "__main__":
                 rushhourgame.move(car, step)
                 counter += 1
 
-    print("--- %s seconds ---" % (time.time() - start_time))
+        # Check whether the current game is run in the least amount of steps
+        if smallest_amount_steps == None or smallest_amount_steps > counter:
+            
+            # Redefine smallest_amount_steps
+            smallest_amount_steps = counter
+            
+            # Save steps to moves_smallest_game 
+            moves_smallest_game = rushhourgame.moves
+
+    # print("--- %s seconds ---" % (time.time() - start_time))
 
     # Write moves to an output file
     with open('output/algo_1/output_moves.csv','w') as out:
         csv_out=csv.writer(out)
         csv_out.writerow(['car','move'])
-        for row in rushhourgame.moves:
+        for row in moves_smallest_game:
             csv_out.writerow(row)
     
     # Write total steps to an output file
