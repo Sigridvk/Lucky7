@@ -8,16 +8,17 @@
 """
 
 import argparse
+import os
 import csv
-import string
-# from itertools import count
 import math
-import algo1
-# import turtle
+import algorithms.algo1 as algo1
 import time
+import datetime
 from sys import argv
 import draw
 import matplotlib.pyplot as plt
+
+
 
 # Global variable for the total steps per solved game
 solved_games = []
@@ -154,11 +155,14 @@ class rushhour():
 
         if board[exit_row][exit_col] == 'X':
             # self.display_board(board)
-            print("You solved the puzzle! 1")
+            # print("You solved the puzzle! 1")
             return True
 
 
 if __name__ == "__main__":
+
+    start_time = time.time()
+    print(datetime.datetime.now())
 
     # Create a command line argument parser
     parser = argparse.ArgumentParser(description='Solve a rushhour game')
@@ -177,6 +181,9 @@ if __name__ == "__main__":
 
     # Loop through algorithm n times
     for i in range(args.runs):
+        # if (i%500 == 0):
+        #     print (i)
+
         counter = 0
 
         # Run main with provided arguments
@@ -215,21 +222,18 @@ if __name__ == "__main__":
                 rushhourgame.move(car, step)
                 counter += 1
 
-    plt.hist(solved_games, bins=10, range=(0, 1000))
-    plt.show()
-
+    print("--- %s seconds ---" % (time.time() - start_time))
 
     # Write moves to an output file
-    with open('output/output_moves.csv','w') as out:
+    with open('output/algo_1/output_moves.csv','w') as out:
         csv_out=csv.writer(out)
         csv_out.writerow(['car','move'])
         for row in rushhourgame.moves:
             csv_out.writerow(row)
     
     # Write total steps to an output file
-    with open(f'output/{args.output}','w') as out2:
+    with open(f'output/algo_1/{args.output}','w') as out2:
         write = csv.writer(out2)
         for val in solved_games:
             write.writerow([val])
     
-    # window.exitonclick()
