@@ -10,11 +10,11 @@ Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]
 """
 
 import argparse
-import algo1
+# from code.algorithms import algo1
 import time
-import datetime
 from sys import argv
-import save_data
+from code import save_data
+from code.algorithms import algo1
 
 # Global variable for the total steps per solved game, game with smallest amount of steps, steps from the smallest game
 solved_games = []
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     start_time = time.time()
 
     # Run algorithm one (random)
-    game_algo1 = algo1.run_algorithm(args.runs, args.game, smallest_amount_steps, steps_from_smallest_game, solved_games)
+    game_algo1 = algo1.run_algorithm(args.runs, args.game, args.output, smallest_amount_steps, steps_from_smallest_game, solved_games)
     # game_algo1 = algo1.run_algorithm(args.runs, args.game)
 
     end_time = time.time()
