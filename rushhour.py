@@ -4,24 +4,21 @@
  Programmeertheorie
  Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
- Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]
+ - Contains the class rushhour.
 """
 
-import argparse
 import os
 import csv
 import math
-import algorithms.algo1 as algo1
-import time
-import datetime
-from sys import argv
 import draw
-import matplotlib.pyplot as plt
-
-
 
 # Global variable for the total steps per solved game
 solved_games = []
+
+# Global variable for the game with smallest amount of steps
+smallest_amount_steps = None
+
+steps_from_smallest_game = []
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
@@ -41,6 +38,7 @@ class rushhour():
 
         # List for moves of the vehicles
         self.moves = []
+        # self.steps_from_smallest_game = []
 
         # Define game file
         file = f'gameboards/{game}.csv'
@@ -157,83 +155,3 @@ class rushhour():
             # self.display_board(board)
             # print("You solved the puzzle! 1")
             return True
-
-
-if __name__ == "__main__":
-
-    start_time = time.time()
-    print(datetime.datetime.now())
-
-    # Create a command line argument parser
-    parser = argparse.ArgumentParser(description='Solve a rushhour game')
-    parser.add_argument("-g", "--game", type=str, help="gamefile name", required=True)
-    parser.add_argument("-o", "--output", help="output file (csv)", required=True)
-    parser.add_argument("-n","--runs", type=int, default=1, help="number of runs")
-
-    # Parse the command line arguments
-    args = parser.parse_args()
-
-    # Check command line arguments
-    if len(argv) not in [5,7]:
-        print(len(argv))
-        print("Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]")
-        exit(1)
-
-    # Loop through algorithm n times
-    for i in range(args.runs):
-        # if (i%500 == 0):
-        #     print (i)
-
-        counter = 0
-
-        # Run main with provided arguments
-        rushhourgame = rushhour(args.output, args.game)
-
-        # Initialize begin state board
-        board = rushhourgame.create_board()
-
-        # Display current state board (in terminal)
-        # rushhourgame.display_board(board)
-
-        # Infinite loop to play game, breaks when solution is found
-        while True:
-
-            # Initialize begin state board
-            board = rushhourgame.create_board()
-
-            # Display current state board (in terminal)
-            # rushhourgame.display_board(board)
-
-            # Check if the current game is solved, if so, break. Append total steps to list
-            # MISSCHIEN DEZE FUNCTIE VERPLAATSEN, WORDT NU OOK GECHECKT NA EEN STAP VAN 0
-            if rushhourgame.solved(board):
-                solved_games.append(counter)
-                break
-            
-            # Call first algorithm to decide which car to move
-            move_game = algo1.random_algorithm(rushhourgame.dict, board)
-            step = move_game[1]
-            car = move_game[0]
-
-            # If the step-size is 0, begin again, else move that car
-            if step == 0:
-                pass
-            else:
-                rushhourgame.move(car, step)
-                counter += 1
-
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    # Write moves to an output file
-    with open('output/algo_1/output_moves.csv','w') as out:
-        csv_out=csv.writer(out)
-        csv_out.writerow(['car','move'])
-        for row in rushhourgame.moves:
-            csv_out.writerow(row)
-    
-    # Write total steps to an output file
-    with open(f'output/algo_1/{args.output}','w') as out2:
-        write = csv.writer(out2)
-        for val in solved_games:
-            write.writerow([val])
-    
