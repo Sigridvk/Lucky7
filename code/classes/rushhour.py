@@ -10,8 +10,8 @@
 import os
 import csv
 import math
-from ..visualisation.draw import draw
-import turtle
+# from ..visualisation.draw import draw
+# import turtle
 
 # Global variable for the total steps per solved game
 solved_games = []
@@ -23,8 +23,8 @@ steps_from_smallest_game = []
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-window = turtle.Screen()
-myPen = turtle.Turtle()
+# window = turtle.Screen()
+# myPen = turtle.Turtle()
 
 
 class rushhour():
@@ -132,16 +132,16 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        window = turtle.Screen()
-        myPen = turtle.Turtle()
+        # window = turtle.Screen()
+        # myPen = turtle.Turtle()
         # show the board in the terminal with lists in a list
         for row in board:
             print(row)
         print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        draw(board, myPen, window, 1)
-        window.update()
+        # draw(board, myPen, window, 1)
+        # window.update()
 
 
     def solved(self, board):
