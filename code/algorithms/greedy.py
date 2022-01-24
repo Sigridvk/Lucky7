@@ -30,9 +30,8 @@ class Greedy():
 
 
     def run_random_greedy(self):
-        pass
+        
 
-            # self._game.dict['X']['column'] = column_
 
 
             
