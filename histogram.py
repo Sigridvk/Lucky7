@@ -21,7 +21,7 @@ def histogram(input_file):
 )
 
     print(df.max())
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
+    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
     # print(df)
     bin_counts = df['bins'].value_counts().sort_index()
     print(bin_counts)
