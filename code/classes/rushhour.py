@@ -23,8 +23,8 @@ steps_from_smallest_game = []
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-window = turtle.Screen()
-myPen = turtle.Turtle()
+# window = turtle.Screen()
+# myPen = turtle.Turtle()
 
 
 class rushhour():

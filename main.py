@@ -15,6 +15,10 @@ import time
 from sys import argv
 from code import save_data
 from code.algorithms import algo1
+from code.classes import rushhour
+
+
+
 
 # Global variable for the total steps per solved game, game with smallest amount of steps, steps from the smallest game
 solved_games = []
@@ -42,8 +46,10 @@ if __name__ == "__main__":
     
     start_time = time.time()
 
+    rushhourgame = rushhour.rushhour(args.output, args.game)
+
     # Run algorithm one (random)
-    game_algo1 = algo1.run_algorithm(args.runs, args.game, args.output, smallest_amount_steps, steps_from_smallest_game, solved_games)
+    game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
     # game_algo1 = algo1.run_algorithm(args.runs, args.game)
 
     end_time = time.time()
