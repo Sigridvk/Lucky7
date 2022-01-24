@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # run1 = Greedy(rushhourgame)
     # run1.red_car_forward()
     # rushhourgame.create_board()
-    # rushhourgame.display_board(rushhourgame._board)
+    rushhourgame.display_board(rushhourgame._board)
 
 
     end_time = time.time()

@@ -6,6 +6,7 @@ class Greedy():
 
     def __init__(self, game):
         self._game = game
+        self.blocking_car = ""
 
 
     def red_car_forward(self):
@@ -15,9 +16,24 @@ class Greedy():
         row =  self._game.dict['X']['row']
         
 	    # Check if red car can move
-        if self._game._board[row][column_] == '':
-            
-            # move the red car
-            self._game.move('X', 1)
+        for i in range(column_, self._game.size_board):
+            if self._game._board[row][i] == '':
+                
+                # move the red car
+                self._game.move('X', 1)
+
+                column_ += 1
+
+            else:
+                self.blocking_car = self._game._board[row][i]
+                break
+
+
+    def run_random_greedy(self):
+        pass
 
             # self._game.dict['X']['column'] = column_
+
+
+            
+

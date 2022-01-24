@@ -10,8 +10,8 @@
 import os
 import csv
 import math
-from ..visualisation.draw import draw
-import turtle
+# from ..visualisation.draw import draw
+# import turtle
 
 # Global variable for the total steps per solved game
 solved_games = []
@@ -57,6 +57,7 @@ class rushhour():
             key = row[0]
             # self.dict[key] = {"orientation": row[1], "col": int(row[2]), "row": int(row[3]),"length": int(row[4])}
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
+
 
     def create_board(self):
             """
@@ -132,16 +133,16 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        window = turtle.Screen()
-        myPen = turtle.Turtle()
+        # window = turtle.Screen()
+        # myPen = turtle.Turtle()
         # show the board in the terminal with lists in a list
         for row in board:
             print(row)
         print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
-        draw(board, myPen, window, 1)
-        window.update()
+        # draw(board, myPen, window, 1)
+        # window.update()
 
 
     def solved(self, board):
