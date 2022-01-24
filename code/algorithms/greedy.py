@@ -27,9 +27,11 @@ class Greedy():
             else:
                 self.blocking_car = self._game._board[row][i]
                 break
-    def run_random_greedy(self):
 
-        
+
+    def run_random_greedy(self):
+        pass
+
             # self._game.dict['X']['column'] = column_
 
 

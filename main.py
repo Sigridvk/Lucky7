@@ -45,7 +45,7 @@ if __name__ == "__main__":
     
     start_time = time.time()
 
-    rushhourgame = rushhour.rushhour(args.output, args.game)
+    rushhourgame = rushhour(args.output, args.game)
 
     # Run algorithm one (random)
     game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
@@ -55,21 +55,21 @@ if __name__ == "__main__":
     # game_algo1 = algo1.run_algorithm(args.runs, args.game, args.output, smallest_amount_steps, steps_from_smallest_game, solved_games)
     # # game_algo1 = algo1.run_algorithm(args.runs, args.game)
 
-    rushhourgame.move('A', -1)
-    rushhourgame.create_board()
-    rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.move('A', -1)
+    # rushhourgame.create_board()
+    # rushhourgame.display_board(rushhourgame._board)
 
-    rushhourgame.move('C', -1)
-    rushhourgame.create_board()
-    rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.move('C', -1)
+    # rushhourgame.create_board()
+    # rushhourgame.display_board(rushhourgame._board)
 
-    rushhourgame.move('G', 2)
-    rushhourgame.create_board()
-    rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.move('G', 2)
+    # rushhourgame.create_board()
+    # rushhourgame.display_board(rushhourgame._board)
 
-    run1 = Greedy(rushhourgame)
-    run1.red_car_forward()
-    rushhourgame.create_board()
+    # run1 = Greedy(rushhourgame)
+    # run1.red_car_forward()
+    # rushhourgame.create_board()
     rushhourgame.display_board(rushhourgame._board)
 
 
