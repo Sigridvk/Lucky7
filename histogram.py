@@ -19,7 +19,7 @@ def histogram(input_file):
 )
 
     print(df.max())
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
+    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
     # print(df)
     bin_counts = df['bins'].value_counts().sort_index()
     print(bin_counts)
@@ -34,7 +34,7 @@ def histogram(input_file):
     addlabels(bin_counts)
     
     plt.xlabel("Steps"), plt.ylabel("Frequency"), plt.title("Frequency of Steps per Game")
-    plt.savefig('output/graphs/graph_9x9_4_10000n_5', bbox_inches = 'tight')
+    plt.savefig('output/graphs/graph_9x9_4_10000n_niet_gedeeld', bbox_inches = 'tight')
     # plt.show()
 
-histogram("output/test_9x9_4_10000n_1.csv")
+histogram("output/algo_1/test_9x9_4_10000n_1.csv")
