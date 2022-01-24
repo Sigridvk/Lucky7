@@ -39,6 +39,8 @@ class rushhour():
 
         # List for moves of the vehicles
         self.moves = []
+
+        self._board = []
         # self.steps_from_smallest_game = []
 
         # Define game file
@@ -125,35 +127,40 @@ class rushhour():
         else:
             # Redefine row coordinate vehicle
             self.dict[car]['row'] -= steps
+        
+        self.create_board()
+        self.display_board()
     
 
-    def display_board(self, board):
+    def display_board(self):
         """
         Prints the board to the terminal.
         Takes the board as parameter.
         Returns nothing.
         """
+        board = self._board
         # window = turtle.Screen()
         # myPen = turtle.Turtle()
         # show the board in the terminal with lists in a list
-        for row in board:
-            print(row)
-        print()
+        # for row in board:
+        #     print(row)
+        # print()
 
         # show the board in turtle, 30 = width squares, 6 = length board
         # draw(board, myPen, window, 1)
         # window.update()
 
 
-    def solved(self, board):
+    def solved(self):
         """
         Checks whether the current board is the solution.
         If the space next to the exit == 'X' the problem is solved.
         """
-
+        board = self._board
         # Calculate the coordinates of the square before the exit as index
         exit_row = math.floor((self.size_board+1)/2) - 1
         exit_col = self.size_board-1
+
 
         if board[exit_row][exit_col] == 'X':
             # self.display_board(board)

@@ -139,17 +139,7 @@ def random_algorithm(dict, board):
     return [car, step]
 
 
-<<<<<<< HEAD
-def check_best_game(counter, best_game, smallest_amount_steps):
-    """
-    """
-
-
-
-def run_algorithm(runs, game, output_file, smallest_amount_steps, steps_from_smallest_game, solved_games):
-=======
 def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
->>>>>>> c65269c7f1d619c24415a2c33781c301f09ad2fc
 # def run_algorithm(runs, game):
     """
     """
@@ -169,7 +159,7 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
             board = rushhourgame.create_board()
 
             # Check if the current game is solved, if so, break. Append total steps to list
-            if rushhourgame.solved(board):
+            if rushhourgame.solved():
                 solved_games.append(counter)
                 break
             
@@ -185,7 +175,7 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
                 rushhourgame.move(car, step)
                 counter += 1
             
-            # rushhourgame.display_board(rushhourgame._board)
+            # rushhourgame.display_board()
 
         # Check whether the current game is run in the least amount of steps
         # Dit eventueel naar een andere functie verplaatsen?
