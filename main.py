@@ -15,6 +15,7 @@ import time
 from sys import argv
 from code import save_data
 from code.algorithms import algo1
+from code.classes import rushhour
 from code.classes.rushhour import rushhour
 from code.algorithms.greedy import Greedy
 
@@ -44,7 +45,11 @@ if __name__ == "__main__":
     
     start_time = time.time()
 
-    rushhourgame = rushhour(args.output, args.game)
+    rushhourgame = rushhour.rushhour(args.output, args.game)
+
+    # Run algorithm one (random)
+    game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
+    # game_algo1 = algo1.run_algorithm(args.runs, args.game)
 
     # # Run algorithm one (random)
     # game_algo1 = algo1.run_algorithm(args.runs, args.game, args.output, smallest_amount_steps, steps_from_smallest_game, solved_games)

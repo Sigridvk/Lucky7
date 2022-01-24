@@ -139,7 +139,7 @@ def random_algorithm(dict, board):
     return [car, step]
 
 
-def run_algorithm(runs, game, output_file, smallest_amount_steps, steps_from_smallest_game, solved_games):
+def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
 # def run_algorithm(runs, game):
     """
     """
@@ -150,7 +150,7 @@ def run_algorithm(runs, game, output_file, smallest_amount_steps, steps_from_sma
         counter = 0
 
         # Create rushhour game
-        rushhourgame = rushhour(output_file, game)
+        # rushhourgame = rushhour(output_file, game)
 
         # Infinite loop to play game, breaks when solution is found
         while True:
