@@ -159,7 +159,7 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
             board = rushhourgame.create_board()
 
             # Check if the current game is solved, if so, break. Append total steps to list
-            if rushhourgame.solved(board):
+            if rushhourgame.solved():
                 solved_games.append(counter)
                 break
             
@@ -175,7 +175,7 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
                 rushhourgame.move(car, step)
                 counter += 1
             
-            # rushhourgame.display_board(rushhourgame._board)
+            # rushhourgame.display_board()
 
         # Check whether the current game is run in the least amount of steps
         if smallest_amount_steps == None or smallest_amount_steps > counter:

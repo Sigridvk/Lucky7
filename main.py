@@ -45,10 +45,25 @@ if __name__ == "__main__":
     
     start_time = time.time()
 
-    rushhourgame = rushhour(args.output, args.game)
+    # Run algorithm multiple times
+    for i in range(args.runs):
+
+        # initialize instance of class rushhour
+        rushhourgame = rushhour(args.output, args.game)
+
+        # initialize instance of class Greedy --> MISSCHIEN WILLEN WE DIT DUS ELKE KEER EEN ANDERE INSTANTIE MAKEN, NU OVERSCHRIJFT HIJ HEM
+        game_algo1 = Greedy(rushhourgame)
+
+        # run random greedy algorithm
+        game_algo1.run_random_greedy()
+
+        # add total steps of solved game to list
+        solved_games.append(game_algo1._count_steps)
+
+    steps_from_smallest_game = []
 
     # Run algorithm one (random)
-    game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
+    # game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
     # game_algo1 = algo1.run_algorithm(args.runs, args.game)
 
     # # Run algorithm one (random)
@@ -57,30 +72,32 @@ if __name__ == "__main__":
 
     # rushhourgame.move('A', -1)
     # rushhourgame.create_board()
-    # rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.display_board()
 
     # rushhourgame.move('C', -1)
     # rushhourgame.create_board()
-    # rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.display_board()
 
     # rushhourgame.move('G', 2)
     # rushhourgame.create_board()
-    # rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.display_board()
 
     # run1 = Greedy(rushhourgame)
     # run1.red_car_forward()
     # rushhourgame.create_board()
-    rushhourgame.display_board(rushhourgame._board)
+    # rushhourgame.display_board()
 
 
     end_time = time.time()
 
-    # time_passed = end_time - start_time
+    time_passed = end_time - start_time
     # steps_from_smallest_game = game_algo1[0]
     # solved_games = game_algo1[1]
+
+    # print(game_algo1._count_steps)
     
     # Show how much time it took to run the algorithm
-    # print(f"It took {time_passed} seconds to solve {args.game} {args.runs} times.")
+    print(f"It took {time_passed} seconds to solve {args.game} {args.runs} times.")
     
-    # Call save_data to write data to output file
-    # save_data.save_data(steps_from_smallest_game, solved_games, time_passed, args.output)
+    # # Call save_data to write data to output file
+    save_data.save_data(steps_from_smallest_game, solved_games, time_passed, args.output)
