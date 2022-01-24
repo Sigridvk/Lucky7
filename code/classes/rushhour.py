@@ -58,6 +58,7 @@ class rushhour():
             # self.dict[key] = {"orientation": row[1], "col": int(row[2]), "row": int(row[3]),"length": int(row[4])}
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
 
+
     def create_board(self):
             """
             Creates the gameboard by extracting data from the nested dictionary with information about the state of the board.
