@@ -58,6 +58,10 @@ def histogram(input_file):
 
     d = {"shortest_route": [df[0].min()]}
     df3 = pd.DataFrame(data = d)
-    df3.to_csv("output/algo_1/test_shortest_route.csv", index=False)
+    df3.to_csv("output/algo_1/test_shortest_route3.csv", index=False)
 
+<<<<<<< HEAD
 histogram("output/algo_1/test.csv")
+=======
+histogram("output/algo_1/test_10.csv")
+>>>>>>> c15b027fa2b1ebd3d0e4df132ce9bec2031522bd
