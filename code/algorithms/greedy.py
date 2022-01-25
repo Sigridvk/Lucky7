@@ -13,6 +13,7 @@ class Greedy():
         self.blocking_car = ""
         self._steps = []
         self._count_steps = 0
+        self._last_step = []
 
 
     def red_car_forward(self):
@@ -83,6 +84,7 @@ class Greedy():
         car = ""
         # self._count_steps = 0
         while not self._game.solved():
+        
         # for i in range(1):
             # if car == self.blocking_car:
             #     self.red_car_forward()
@@ -100,9 +102,16 @@ class Greedy():
             # If the step-size is 0, begin again, else move that car
             if step == 0:
                 pass
-
+            elif move_game == self._last_step:
+                pass
             else:
                 self._game.move(car, step)
+
+                # Save last step so that no move back will be made
+                self._last_step = [car, (step*-1)]
+
+                # print(self._last_step)
+
                 self._count_steps += 1
                 self._steps.append((car, step))
 
