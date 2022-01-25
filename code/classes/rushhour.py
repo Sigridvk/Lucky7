@@ -62,10 +62,10 @@ class rushhour():
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
         
         self._greedy_cars = list(self.dict.keys())
-        self._greedy_cars.remove("X")
+        # self._greedy_cars.remove("X")
 
         self._greedy_cars_all = list(self.dict.keys())
-        self._greedy_cars_all.remove("X")
+        # self._greedy_cars_all.remove("X")
 
         # print(self._greedy_cars)
 
