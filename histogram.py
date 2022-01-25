@@ -54,10 +54,20 @@ def histogram(input_file):
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
+<<<<<<< HEAD
     df2.to_csv("output/algo_1/test_mean_and_median_forward_9x9.csv", index=False)
+=======
+    df2.to_csv("output/algo_1/test_mean_and_median_6x6rodeauto.csv", index=False)
+>>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
 
     d = {"shortest_route": [df[0].min()], 'longest_route': [df[0].max()]}
     df3 = pd.DataFrame(data = d)
+<<<<<<< HEAD
     df3.to_csv("output/algo_1/test_shortest_route_forward_9x9.csv", index=False)
 
 histogram("output/algo_1/test2.csv")
+=======
+    df3.to_csv("output/algo_1/test_shortest_route3_6x6rodeauto.csv", index=False)
+
+histogram("output/algo_1/test_6x6METrodeauto.csv")
+>>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c

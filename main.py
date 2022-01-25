@@ -58,13 +58,21 @@ if __name__ == "__main__":
         # run random greedy algorithm
         game_algo1.run_random_greedy()
 
+        # Check whether the current game is run in the least amount of steps
+        if smallest_amount_steps == None or smallest_amount_steps > game_algo1._count_steps:
+            
+            # Redefine smallest_amount_steps and save the steps from this game
+            smallest_amount_steps = game_algo1._count_steps
+            steps_from_smallest_game = rushhourgame.moves
+
         # add total steps of solved game to list
         solved_games.append(game_algo1._count_steps)
 
         # print(game_algo1._count_steps)
 
+
     # print(solved_games)
-    steps_from_smallest_game = []
+    # steps_from_smallest_game = []
 
     # Run algorithm one (random)
     # game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
