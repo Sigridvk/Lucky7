@@ -23,7 +23,7 @@ from classes.rushhour import rushhour
 
 if __name__ == "__main__":
 
-    rushhourgame = rushhour("test.csv", "Rushhour6x6_1")
+    # rushhourgame = rushhour("test.csv", "Rushhour6x6_1")
 
     # argparse (roep het programma aan met de juiste moves)
     # Create a command line argument parser
