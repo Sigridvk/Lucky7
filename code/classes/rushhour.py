@@ -22,10 +22,10 @@ smallest_amount_steps = None
 
 steps_from_smallest_game = []
 
-# # Variables to display the board in turtle
-# # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-# window = turtle.Screen()
-# myPen = turtle.Turtle()
+# Variables to display the board in turtle
+# Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
+window = turtle.Screen()
+myPen = turtle.Turtle()
 
 
 class rushhour():
@@ -62,10 +62,10 @@ class rushhour():
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
         
         self._greedy_cars = list(self.dict.keys())
-        # self._greedy_cars.remove("X")
+        self._greedy_cars.remove("X")
 
         self._greedy_cars_all = list(self.dict.keys())
-        # self._greedy_cars_all.remove("X")
+        self._greedy_cars_all.remove("X")
 
         # print(self._greedy_cars)
 
@@ -150,17 +150,17 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        # board = self._board
-        # window = turtle.Screen()
-        # myPen = turtle.Turtle()
+        board = self._board
+        window = turtle.Screen()
+        myPen = turtle.Turtle()
         # # show the board in the terminal with lists in a list
         # for row in board:
         #     print(row)
         # print()
 
-        # # show the board in turtle, 30 = width squares, 6 = length board
-        # draw(board, myPen, window, 1)
-        # window.update()
+        # show the board in turtle, 30 = width squares, 6 = length board
+        draw(board, myPen, window, 0)
+        window.update()
 
 
     def solved(self):
