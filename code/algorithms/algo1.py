@@ -33,6 +33,7 @@ def check_move(car, cars_dict, board):
     """
     Returns a list of possible moves for a given car
     """
+    # print(f"checked_car = {car}")
 
     # List of all possible moves
     moves_list = []
@@ -178,7 +179,6 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
             # rushhourgame.display_board()
 
         # Check whether the current game is run in the least amount of steps
-        # Dit eventueel naar een andere functie verplaatsen?
         if smallest_amount_steps == None or smallest_amount_steps > counter:
             
             # Redefine smallest_amount_steps and save the steps from this game
