@@ -45,6 +45,7 @@ if __name__ == "__main__":
     
     start_time = time.time()
 
+
     # Run algorithm multiple times
     for i in range(args.runs):
 
@@ -60,6 +61,9 @@ if __name__ == "__main__":
         # add total steps of solved game to list
         solved_games.append(game_algo1._count_steps)
 
+        print(game_algo1._count_steps)
+
+    print(solved_games)
     steps_from_smallest_game = []
 
     # Run algorithm one (random)

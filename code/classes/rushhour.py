@@ -6,12 +6,13 @@
 
  - Contains the class rushhour.
 """
-
+ 
 import os
+import copy
 import csv
 import math
-# from ..visualisation.draw import draw
-# import turtle
+from ..visualisation.draw import draw
+import turtle
 
 # Global variable for the total steps per solved game
 solved_games = []
@@ -23,8 +24,8 @@ steps_from_smallest_game = []
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-# window = turtle.Screen()
-# myPen = turtle.Turtle()
+window = turtle.Screen()
+myPen = turtle.Turtle()
 
 
 class rushhour():
@@ -59,6 +60,14 @@ class rushhour():
             key = row[0]
             # self.dict[key] = {"orientation": row[1], "col": int(row[2]), "row": int(row[3]),"length": int(row[4])}
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
+        
+        self._greedy_cars = list(self.dict.keys())
+        # self._greedy_cars.remove("X")
+
+        self._greedy_cars_all = list(self.dict.keys())
+        # self._greedy_cars_all.remove("X")
+
+        # print(self._greedy_cars)
 
 
     def create_board(self):
@@ -112,6 +121,9 @@ class rushhour():
         Takes the vehicle and the number of steps the car has to take as parameters.
         Returns nothing.
         """
+
+        # print(f"car: {car}")
+        # print(f"car: {steps}")
         
         # Define move and append to moves
         move = (car, steps)
@@ -138,15 +150,15 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        board = self._board
+        # board = self._board
         # window = turtle.Screen()
         # myPen = turtle.Turtle()
-        # show the board in the terminal with lists in a list
+        # # show the board in the terminal with lists in a list
         # for row in board:
         #     print(row)
         # print()
 
-        # show the board in turtle, 30 = width squares, 6 = length board
+        # # show the board in turtle, 30 = width squares, 6 = length board
         # draw(board, myPen, window, 1)
         # window.update()
 

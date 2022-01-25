@@ -33,6 +33,7 @@ def check_move(car, cars_dict, board):
     """
     Returns a list of possible moves for a given car
     """
+    # print(f"checked_car = {car}")
 
     # List of all possible moves
     moves_list = []
