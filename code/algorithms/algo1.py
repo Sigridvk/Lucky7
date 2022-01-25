@@ -118,7 +118,7 @@ def check_move(car, cars_dict, board):
 
                 else:
                     break
-    print(f"Car: {car} Moves list: {moves_list}")
+    # print(f"Car: {car} Moves list: {moves_list}")
     return moves_list
 
 
