@@ -21,7 +21,7 @@ def histogram(input_file):
 )
 
     print(df.max())
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
+    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
     # print(df)
     bin_counts = df['bins'].value_counts().sort_index()
     print(bin_counts)
@@ -45,23 +45,19 @@ def histogram(input_file):
     i = 0 
     if os.path.exists('output/graphs/graph.png'):
         i += 1
-        plt.savefig(f'output/graphs/graph_{i}.png')
+        plt.savefig(f'output/graphs/graph_{i}.png', bbox_inches = 'tight')
     else:
-        plt.savefig('output/graphs/graph.png')
+        plt.savefig('output/graphs/graph.png', bbox_inches = 'tight')
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
-    df2.to_csv("output/algo_1/test_mean_and_median_.csv", index=False)
+    df2.to_csv("output/algo_1/test_mean_and_median_forward_9x9.csv", index=False)
 
-    d = {"shortest_route": [df[0].min()]}
+    d = {"shortest_route": [df[0].min()], 'longest_route': [df[0].max()]}
     df3 = pd.DataFrame(data = d)
-    df3.to_csv("output/algo_1/test_shortest_route3.csv", index=False)
+    df3.to_csv("output/algo_1/test_shortest_route_forward_9x9.csv", index=False)
 
-<<<<<<< HEAD
-histogram("output/algo_1/test.csv")
-=======
-histogram("output/algo_1/test_10.csv")
->>>>>>> c15b027fa2b1ebd3d0e4df132ce9bec2031522bd
+histogram("output/algo_1/test2.csv")

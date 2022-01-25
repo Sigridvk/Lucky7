@@ -22,13 +22,8 @@ smallest_amount_steps = None
 
 steps_from_smallest_game = []
 
-<<<<<<< HEAD
-# Variables to display the board in turtle
-# Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-=======
 # # Variables to display the board in turtle
 # # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
->>>>>>> c15b027fa2b1ebd3d0e4df132ce9bec2031522bd
 # window = turtle.Screen()
 # myPen = turtle.Turtle()
 
