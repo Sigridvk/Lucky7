@@ -12,6 +12,7 @@ Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]
 import argparse
 # from code.algorithms import algo1
 import time
+import datetime
 from sys import argv
 from code import save_data
 from code.algorithms import algo1
@@ -26,7 +27,7 @@ steps_from_smallest_game = []
 
 if __name__ == "__main__":
 
-    # print(datetime.datetime.now())
+    print(datetime.datetime.now())
 
     # Create a command line argument parser
     parser = argparse.ArgumentParser(description='Solve a rushhour game')
@@ -49,6 +50,9 @@ if __name__ == "__main__":
     # Run algorithm multiple times
     for i in range(args.runs):
 
+    #     if (i % 50) == 0:
+    #         print(i)
+
         # initialize instance of class rushhour
         rushhourgame = rushhour(args.output, args.game)
 
@@ -69,28 +73,6 @@ if __name__ == "__main__":
     # Run algorithm one (random)
     # game_algo1 = algo1.run_algorithm(rushhourgame, args.runs, smallest_amount_steps, steps_from_smallest_game, solved_games)
     # game_algo1 = algo1.run_algorithm(args.runs, args.game)
-
-    # # Run algorithm one (random)
-    # game_algo1 = algo1.run_algorithm(args.runs, args.game, args.output, smallest_amount_steps, steps_from_smallest_game, solved_games)
-    # # game_algo1 = algo1.run_algorithm(args.runs, args.game)
-
-    # rushhourgame.move('A', -1)
-    # rushhourgame.create_board()
-    # rushhourgame.display_board()
-
-    # rushhourgame.move('C', -1)
-    # rushhourgame.create_board()
-    # rushhourgame.display_board()
-
-    # rushhourgame.move('G', 2)
-    # rushhourgame.create_board()
-    # rushhourgame.display_board()
-
-    # run1 = Greedy(rushhourgame)
-    # run1.red_car_forward()
-    # rushhourgame.create_board()
-    # rushhourgame.display_board()
-
 
     end_time = time.time()
 

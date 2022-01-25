@@ -43,21 +43,21 @@ def histogram(input_file):
     #     i += 1
     #     plt.savefig(f"{filename}{i}.png")
     i = 0 
-    if os.path.exists('output/graphs/graph.png'):
+    if os.path.exists('output/graphs2/graph.png'):
         i += 1
-        plt.savefig(f'output/graphs/graph_{i}.png')
+        plt.savefig(f'output/graphs2/9x9_MET_graph_{i}.png', bbox_inches = 'tight')
     else:
-        plt.savefig('output/graphs/graph.png')
+        plt.savefig('output/graphs2/9x9_MET_graph.png', bbox_inches = 'tight')
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
-    df2.to_csv("output/algo_1/test_mean_and_median4.csv", index=False)
+    df2.to_csv("output/algo_2/test_mean_and_median_9x9_MET.csv", index=False)
 
-    d = {"shortest_route": [df[0].min()]}
+    d = {"shortest_route": [df[0].min()], "longest_route": [df[0].max()]}
     df3 = pd.DataFrame(data = d)
-    df3.to_csv("output/algo_1/test_shortest_route4.csv", index=False)
+    df3.to_csv("output/algo_2/test_shortest_route_9x9_MET.csv", index=False)
 
-histogram("output/algo_1/greedy_new_9x9_4_1000times.csv")
+histogram("output/algo_1/test.csv")
