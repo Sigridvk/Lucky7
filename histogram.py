@@ -60,4 +60,4 @@ def histogram(input_file):
     df3 = pd.DataFrame(data = d)
     df3.to_csv("output/algo_1/test_shortest_route.csv", index=False)
 
-histogram("output/algo_1/test_no_redcar_forward.csv")
+histogram("output/algo_1/test_10.csv")
