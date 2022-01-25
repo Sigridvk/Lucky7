@@ -86,8 +86,8 @@ class Greedy():
         while not self._game.solved():
         
         # for i in range(1):
-            if car == self.blocking_car:
-                self.red_car_forward()
+            # if car == self.blocking_car:
+            #     self.red_car_forward()
 
             if self._game.solved():
                 break
