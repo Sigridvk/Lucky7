@@ -101,7 +101,7 @@ if __name__ == "__main__":
     # print(game_algo1._count_steps)
     
     # Show how much time it took to run the algorithm
-    # print(f"It took {time_passed} seconds to solve {args.game} {args.runs} times.")
+    print(f"It took {time_passed} seconds to solve {args.game} {args.runs} times.")
     
     # # Call save_data to write data to output file
     save_data.save_data(steps_from_smallest_game, solved_games, time_passed, args.output)
