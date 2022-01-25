@@ -54,10 +54,10 @@ def histogram(input_file):
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
-    df2.to_csv("output/algo_1/test_mean_and_median_.csv", index=False)
+    df2.to_csv("output/algo_1/test_mean_and_median_6x6rodeauto.csv", index=False)
 
     d = {"shortest_route": [df[0].min()]}
     df3 = pd.DataFrame(data = d)
-    df3.to_csv("output/algo_1/test_shortest_route3.csv", index=False)
+    df3.to_csv("output/algo_1/test_shortest_route3_6x6rodeauto.csv", index=False)
 
-histogram("output/algo_1/test_10.csv")
+histogram("output/algo_1/test_6x6METrodeauto.csv")

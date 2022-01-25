@@ -11,8 +11,13 @@ import os
 import copy
 import csv
 import math
-from ..visualisation.draw import draw
+import sys
 import turtle
+
+sys.path.append("../")
+
+from visualisation.draw import draw
+
 
 # Global variable for the total steps per solved game
 solved_games = []
