@@ -11,13 +11,8 @@ import os
 import copy
 import csv
 import math
-<<<<<<< HEAD
-from ..visualisation.draw import draw
-# import turtle
-=======
 import sys
 import turtle
->>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
 
 # sys.path.append("../")
 
