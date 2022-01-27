@@ -37,20 +37,16 @@ def histogram(input_file):
     
     plt.xlabel("Steps"), plt.ylabel("Frequency"), plt.title("Frequency of Steps per Game")
 
-    # filename = 'output/graphs/graph'
-    # i = 0
-    # while os.path.exists(f"{filename}.png"):
-    #     i += 1
-    #     plt.savefig(f"{filename}{i}.png")
     i = 0 
     if os.path.exists('output/graphs2/graph.png'):
         i += 1
         plt.savefig(f'output/graphs2/12x12_ZONDER_graph_{i}.png', bbox_inches = 'tight')
     else:
-        plt.savefig('output/graphs2/12x12_ZONDER_graph.png', bbox_inches = 'tight')
+        plt.savefig('output/graphs2/9x9_MET_graph.png', bbox_inches = 'tight')
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
+
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
