@@ -146,7 +146,7 @@ class rushhour():
             self.dict[car]['row'] -= steps
         
         self.create_board()
-        self.display_board()
+        # self.display_board()
     
 
     def display_board(self):

@@ -20,6 +20,7 @@ from code.classes import rushhour
 from code.classes.rushhour import rushhour
 from code.algorithms.greedy import Greedy
 from code.algorithms.bfa import Breadth_first
+from code.algorithms.breadth import Breadth_first1
 
 # Global variable for the total steps per solved game, game with smallest amount of steps, steps from the smallest game
 solved_games = []
@@ -63,6 +64,7 @@ if __name__ == "__main__":
         # initialize instance of class rushhour
         rushhourgame = rushhour(args.output, args.game)
 
+
     #     # run random greedy algorithm
     #     game_algo1.run_random_greedy()
 
@@ -80,9 +82,11 @@ if __name__ == "__main__":
     # initialize instance of class rushhour
     # rushhourgame = rushhour(args.output, args.game)
 
-    game_bfa = Breadth_first(args.output, args.game)
+    # game_bfa = Breadth_first(args.output, args.game)
+    game_breadth = Breadth_first1(args.output, args.game)
+    game_breadth.run()
 
-    game_bfa.run()
+    # game_bfa.run()
 
     end_time = time.time()
     time_passed = end_time - start_time
