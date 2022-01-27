@@ -50,8 +50,8 @@ if __name__ == "__main__":
     # Run algorithm multiple times
     for i in range(args.runs):
 
-    #     if (i % 50) == 0:
-    #         print(i)
+        if (i % 50) == 0:
+            print(i)
 
         # initialize instance of class rushhour
         rushhourgame = rushhour(args.output, args.game)

@@ -45,19 +45,19 @@ def histogram(input_file):
     i = 0 
     if os.path.exists('output/graphs2/graph.png'):
         i += 1
-        plt.savefig(f'output/graphs2/9x9_MET_graph_{i}.png', bbox_inches = 'tight')
+        plt.savefig(f'output/graphs2/12x12_ZONDER_graph_{i}.png', bbox_inches = 'tight')
     else:
-        plt.savefig('output/graphs2/9x9_MET_graph.png', bbox_inches = 'tight')
+        plt.savefig('output/graphs2/12x12_ZONDER_graph.png', bbox_inches = 'tight')
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
-    df2.to_csv("output/algo_1/test_mean_and_median_6x6rodeauto.csv", index=False)
+    df2.to_csv("output/algo_1/test_mean_and_median_12x12_ZONDER.csv", index=False)
 
     d = {"shortest_route": [df[0].min()], "longest_route": [df[0].max()]}
     df3 = pd.DataFrame(data = d)
-    df3.to_csv("output/algo_1/test_shortest_route3_6x6rodeauto.csv", index=False)
+    df3.to_csv("output/algo_1/test_shortest_route3_12x12_ZONDER.csv", index=False)
 
-histogram("output/algo_1/test_6x6METrodeauto.csv")
+histogram("output/algo_1/ZONDER_algo2_12x12_7_1000times.csv")
