@@ -12,6 +12,7 @@ Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]
 import argparse
 # from code.algorithms import algo1
 import time
+import datetime
 from sys import argv
 from code import save_data
 from code.algorithms import algo1
@@ -27,7 +28,7 @@ steps_from_smallest_game = []
 
 if __name__ == "__main__":
 
-    # print(datetime.datetime.now())
+    print(datetime.datetime.now())
 
     # Create a command line argument parser
     parser = argparse.ArgumentParser(description='Solve a rushhour game')
@@ -53,8 +54,16 @@ if __name__ == "__main__":
     #     # initialize instance of class rushhour
     #     rushhourgame = rushhour(args.output, args.game)
 
+<<<<<<< HEAD
     #     # initialize instance of class Greedy --> MISSCHIEN WILLEN WE DIT DUS ELKE KEER EEN ANDERE INSTANTIE MAKEN, NU OVERSCHRIJFT HIJ HEM
     #     game_algo1 = Greedy(rushhourgame)
+=======
+    #     if (i % 50) == 0:
+    #         print(i)
+
+        # initialize instance of class rushhour
+        rushhourgame = rushhour(args.output, args.game)
+>>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
 
     #     # run random greedy algorithm
     #     game_algo1.run_random_greedy()
@@ -69,6 +78,7 @@ if __name__ == "__main__":
     #     # add total steps of solved game to list
     #     solved_games.append(game_algo1._count_steps)
 
+<<<<<<< HEAD
     # BREADTH FIRST
     # initialize instance of class rushhour
     # rushhourgame = rushhour(args.output, args.game)
@@ -77,6 +87,8 @@ if __name__ == "__main__":
 
     game_bfa.run()
 
+=======
+>>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
     end_time = time.time()
     time_passed = end_time - start_time
     
