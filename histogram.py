@@ -41,29 +41,34 @@ def histogram(input_file):
     if os.path.exists('output/graphs2/graph.png'):
         i += 1
 <<<<<<< HEAD
+<<<<<<< HEAD
         plt.savefig(f'output/graphs/graph_{i}.png', bbox_inches = 'tight')
     else:
         plt.savefig('output/graphs/graph.png', bbox_inches = 'tight')
 =======
         plt.savefig(f'output/graphs2/9x9_MET_graph_{i}.png', bbox_inches = 'tight')
-    else:
-<<<<<<< HEAD
-        plt.savefig('output/graphs/graph.png'
 =======
+        plt.savefig(f'output/graphs2/12x12_ZONDER_graph_{i}.png', bbox_inches = 'tight')
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
+    else:
         plt.savefig('output/graphs2/9x9_MET_graph.png', bbox_inches = 'tight')
 >>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
->>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
+
 
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
+<<<<<<< HEAD
 <<<<<<< HEAD
     df2.to_csv("output/algo_1/test_mean_and_median_forward_9x9.csv", index=False)
 =======
     df2.to_csv("output/algo_1/test_mean_and_median_6x6rodeauto.csv", index=False)
 >>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
+=======
+    df2.to_csv("output/algo_1/test_mean_and_median_12x12_ZONDER.csv", index=False)
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
 
 <<<<<<< HEAD
     d = {"shortest_route": [df[0].min()], 'longest_route': [df[0].max()]}
@@ -71,6 +76,7 @@ def histogram(input_file):
     d = {"shortest_route": [df[0].min()], "longest_route": [df[0].max()]}
 >>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
     df3 = pd.DataFrame(data = d)
+<<<<<<< HEAD
 <<<<<<< HEAD
     df3.to_csv("output/algo_1/test_shortest_route_forward_9x9.csv", index=False)
 
@@ -80,3 +86,8 @@ histogram("output/algo_1/test2.csv")
 
 histogram("output/algo_1/test_6x6METrodeauto.csv")
 >>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
+=======
+    df3.to_csv("output/algo_1/test_shortest_route3_12x12_ZONDER.csv", index=False)
+
+histogram("output/algo_1/ZONDER_algo2_12x12_7_1000times.csv")
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
