@@ -110,10 +110,9 @@ class Greedy():
                 # Save last step so that no move back will be made
                 self._last_step = [car, (step*-1)]
 
-                # print(self._last_step)
-
                 self._count_steps += 1
                 self._steps.append((car, step))
+            
 
 
             # self._game.dict['X']['column'] = column_

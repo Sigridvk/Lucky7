@@ -19,9 +19,9 @@ import sys
 import turtle
 >>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
 
-sys.path.append("../")
+# sys.path.append("../")
 
-from visualisation.draw import draw
+from ..visualisation.draw import draw
 
 
 # Global variable for the total steps per solved game
@@ -160,17 +160,17 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        # board = self._board
-        # window = turtle.Screen()
-        # myPen = turtle.Turtle()
-        # # # show the board in the terminal with lists in a list
-        # # for row in board:
-        # #     print(row)
-        # # print()
+        board = self._board
+        window = turtle.Screen()
+        myPen = turtle.Turtle()
+        # # show the board in the terminal with lists in a list
+        # for row in board:
+        #     print(row)
+        # print()
 
-        # # show the board in turtle, 30 = width squares, 6 = length board
-        # draw(board, myPen, window, 0)
-        # window.update()
+        # show the board in turtle, 30 = width squares, 6 = length board
+        draw(board, myPen, window, 0)
+        window.update()
 
 
     def solved(self):

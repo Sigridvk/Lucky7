@@ -10,11 +10,6 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 import random
 from ..classes.rushhour import rushhour
 
-# Global variable for the total steps per solved game
-# solved_games = []
-# smallest_amount_steps = None
-# steps_from_smallest_game = []
-
 def random_car(cars_dict):
     """
     Returns a random car from a dictionary of cars
@@ -44,7 +39,6 @@ def check_move(car, cars_dict, board):
         # Define coordinates spot on the right side of the vehicle 
         # row = cars_dict[car]['row'] - 1
         row = cars_dict[car]['row']
-        # column_right = cars_dict[car]['col'] + cars_dict[car]['length'] - 1
         column_right = cars_dict[car]['col'] + cars_dict[car]['length']
 
         # part of the list on the rightside of the car
@@ -60,7 +54,6 @@ def check_move(car, cars_dict, board):
                 break
 
         # Define coordinates spot on the left side of the vehicle
-        # column_left = cars_dict[car]['col'] - 1
         column_left = cars_dict[car]['col']
 
         # List of all spots to the left of the car
@@ -80,9 +73,7 @@ def check_move(car, cars_dict, board):
     if cars_dict[car]['orientation'] == 'V':
 
         # Define coordinates spot on the above side of the vehicle
-        # row_up = cars_dict[car]['row'] - 2
         row_up = cars_dict[car]['row'] - 1
-        # column = cars_dict[car]['col'] - 1
         column = cars_dict[car]['col']
 
         # Check if there is a spot above the car
@@ -101,7 +92,6 @@ def check_move(car, cars_dict, board):
                     break
 
         # Define coordinates spot on the down side of the vehicle
-        # row_down = cars_dict[car]['row'] + cars_dict[car]['length'] - 1
         row_down = cars_dict[car]['row'] + cars_dict[car]['length']
 
         # Check if there are any spots below the car
@@ -118,7 +108,6 @@ def check_move(car, cars_dict, board):
 
                 else:
                     break
-    # print(f"Car: {car} Moves list: {moves_list}")
     return moves_list
 
 
@@ -150,9 +139,6 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
 
         counter = 0
 
-        # Create rushhour game
-        # rushhourgame = rushhour(output_file, game)
-
         # Infinite loop to play game, breaks when solution is found
         while True:
 
@@ -175,8 +161,6 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
             else:
                 rushhourgame.move(car, step)
                 counter += 1
-            
-            # rushhourgame.display_board()
 
         # Check whether the current game is run in the least amount of steps
         if smallest_amount_steps == None or smallest_amount_steps > counter:
