@@ -50,7 +50,7 @@ class Breadth_first1():
             self._rushhourgame2 = copy.deepcopy(self._rushhourgame)
             self._rushhourgame2.move(car, step)
             print(self._rushhourgame2._board)
-            self._rushhourgame = copy.deepcopy(self._rushhourgame)
+            # self._rushhourgame = copy.deepcopy(self._rushhourgame)
             # print(self._rushhourgame._board)
             # print(self._board)
             self._rushhourgame2.display_board()
