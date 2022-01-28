@@ -73,6 +73,7 @@ class rushhour():
         # self._greedy_cars_all.remove("X")
 
         # print(self._greedy_cars)
+        self._path = ""
 
 
     def create_board(self):
@@ -146,6 +147,7 @@ class rushhour():
             self.dict[car]['row'] -= steps
         
         self.create_board()
+        # print(self.dict)
         # self.display_board()
     
 

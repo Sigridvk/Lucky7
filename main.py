@@ -83,7 +83,7 @@ if __name__ == "__main__":
     # rushhourgame = rushhour(args.output, args.game)
 
     # game_bfa = Breadth_first(args.output, args.game)
-    game_breadth = Breadth_first1(args.output, args.game)
+    game_breadth = Breadth_first1(args.output, args.game,0)
     game_breadth.run()
 
     # game_bfa.run()
