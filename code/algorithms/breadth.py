@@ -1,3 +1,10 @@
+"""
+breadth.py
+
+Programmeertheorie
+Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
+"""
+
 import copy
 import queue
 from time import sleep
@@ -11,6 +18,7 @@ class Breadth_first1():
     def __init__(self, output, game, depth = 4):
         """
         """
+
         self._game = game
         self._rushhourgame = rushhour(output, game)
         self._depth = depth
@@ -22,107 +30,110 @@ class Breadth_first1():
         
         self._state = self._board
 
+        # A variable that is used for printing the depth of the search
         self.__depth = 0
+
+        # An empty set to memorize unique boards
+        self._unique_boards = ()
 
     
     def all_moves(self, last_step):
+        """
+        Checks all moves that can be made from a certain state.
+        Returns a list with the moves.
+        Takes as parameter last_step so that this step will not be made.
+        """
+
+        # Create empty list for moves
         self._all_moves = []
+
+        # Remove the move from the list that has just been made 
         if last_step != '0':
             car1 = last_step[0]
             step = int(last_step[1:])
             step = step * -1
             last_step = car1 + str(step)
+
         board = self._rushhourgame.create_board()
+
+        # (Heb je het bord niet al door de bovenstaande regel code?)
         board = self._rushhourgame._board
-        # print(f"Board in all moves: {board}")
+
+        # For-loop over all cars in dict
         for car in self._rushhourgame.dict:
             moves = algo1.check_move(car, self._rushhourgame.dict, board)
+            
+            # Append moves found for particular car to the all_moves list
             for move in moves:
                 move1 = car + str(move)
                 if move1 != last_step:
                     self._all_moves.append(move1)
-        # print(f"Possible moves: {self._all_moves}")
-        # print()
+        
         return(self._all_moves)
     
 
     def get_next_state(self):
-        # print(self._queue_states.get())
+        """
+        """
         return self._queue_states.get()
 
+
     def build_children(self, all_steps):
-        lengte = len(all_steps) - 3
-        last_step = all_steps[lengte:]
+        """
+        """
+
+        # Get last step that has been made 
+        # (Kan misschien later weggehaald worden wanneer we staten op gaan slaan)
+        length = len(all_steps) - 3
+        last_step = all_steps[length:]
         last_step = last_step[0]
-        # print(f"Last_step: {last_step}")
+
         if last_step[0] == '_':
             str1 = ""
             last_step= last_step[1:]
             for i in last_step:
                 str1 += i
             last_step = str1
-            # print(f"Last_Step in if {last_step}")
 
+        # Create children from current state (possible steps)
         children = self.all_moves(last_step)
 
-        self._depth += 1
-        # print(self._depth)
+        # self._depth += 1
+
+        # For-loop over children
         for child in children:
+            
+            # Define car and step
             car = child[0]
             step = int(child[1:])
-            child1 = car + str(step)
-            # print(f"child1 : {child1}")
-            listToStr ='_'.join([str(elem) for elem in all_steps])
-            # print(f"list to str: {listToStr}")
-            child2 = listToStr
-            child2 += '_' + child1
-            # print(f"child2: {child2}")
-            # print(car, step)
-            self._rushhourgame2 = copy.deepcopy(self._rushhourgame)
-            self._rushhourgame2.create_board()
-            # self._rushhourgame2.display_board()
-            self._rushhourgame2._path += child2
-            # print(self._rushhourgame2._path)
-            self._rushhourgame2.move(car, step)
-            # self._rushhourgame2._board = copy.deepcopy(self._rushhourgame2.create_board())
-            # self._rushhourgame.display_board()
-            # sleep(1)
-            
-            # print(f"length: {len(all_steps)}")
-            # print(f"depth: {self.__depth}")
 
+            # Current child
+            child1 = car + str(step)
+
+            # Join the all_steps with current child
+            listToStr ='_'.join([str(elem) for elem in all_steps])
+            
+            # path_ are all the previous steps
+            path_ = listToStr
+            path_ += '_' + child1
+
+            # In rushhourgame2 the children (moves) 
+            self._rushhourgame2 = copy.deepcopy(self._rushhourgame)
+
+            # 
+            self._rushhourgame2._path += path_
+
+            # Moves vehicle by changing the dict
+            self._rushhourgame2.move(car, step)
+
+            # Prints depth once arrived at new depth
             if len(all_steps) > self.__depth:
                 self.__depth = copy.deepcopy(len(all_steps))
                 print(self.__depth)
-            
-            
-            # print(len(all_steps))   
+             
+            # Checks whether solution is found
             if self._rushhourgame.solved():
-                print(f"Oplossing: {all_steps}")
-                # all_steps.append('A-1')
-                # all_steps.append('B-1')
-                # print(all_steps)
-
-                # matches = []
-                # character = ["-"]
-                # for i in all_steps:
-                #     str_arr = list(i)
-                #     for j in character:
-                #         if j in str_arr:
-                #             tmp = i
-                #             matches.append(tmp)
-                
-                # print(matches)
-                # for i in all_steps:
-                #     # print(re.split('-',i))
-                #     x = i.split("-")
-                #     if len(x) == 2:
-                #         int(x[1]) * -1
-
-                    # print(x)
-
-
-                # print(len(all_steps))                
+                print(f"Oplossing: {all_steps}")            
 
                 # Write best solution to an output file
                 with open(f'output/bfa/best_solution_{self._game}.csv','w') as out:
@@ -136,68 +147,48 @@ class Breadth_first1():
                         car_ = element[0]
                         step_ = element[1:]
                         writer.writerow([car_, step_])
-
-                    # print(all_steps)
-
-                    # for row in all_steps:
-                    #     # for j in character:
-                    #     #     if j in all_steps:
-                    #     #         tmp = row
-
-                    #     writer.writerow(row)
-
                 break
+            
             # sleep(0.5)
-            self._queue_states.put({child2:self._rushhourgame2.dict})
+            self._queue_states.put({path_:self._rushhourgame2.dict})
         
             
-
     def solved(self):
+        """
+        Checks whether game is solved.
+        """
+
         if self._rushhourgame.solved():
             print("solved")
             return True
 
 
     def run(self):
-        # path = ""
+        """
+        """
+
         all_steps = ""
-        # for i in range(15):
+
+        # 
         while self._queue_states:
             if self.solved():
                 break
-
+            
+            # Gets next state 
             state_dict = self.get_next_state()
-            # print(f"state dict: {state_dict}")
 
-            # print(f"state_dict {state_dict}")
+            # Get key of next state (key is the path)
             all_steps = list(state_dict.keys())[0]
             all_steps = str(all_steps)
 
-            # all_steps += all_steps
-            # print(f"all steps: {all_steps}")
+            # Puts steps seperately in a list 
             all_steps = all_steps.split('_')
 
-            # print(all_steps)
-            last_step = all_steps[-1]
-            # print(f"Last step {last_step}")
+            # Get the value (dict) of the next state
             state_dict = list(state_dict.values())[0]
-            
-            
-            # state_dict.create_board()
-            # print(f"state: {state_dict}")
+
+            # Make the 'next_dict' the 'current_dict'
             self._rushhourgame.dict = state_dict
-            # print("Checking if solved")
-            # print(self._rushhourgame._board)
             
+            # Create children from current state
             self.build_children(all_steps)
-            # path += last_step
-            # print(f"path: {path}")
-
-            
-
-
-
-
-
-
-# bfa = Breadth_first('test_bfa.csv', 'Rushhour_6x6_1', 1)
