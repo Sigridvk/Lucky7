@@ -146,8 +146,9 @@ class rushhour():
             # Redefine row coordinate vehicle
             self.dict[car]['row'] -= steps
         
-        self.create_board()
-        # print(self.dict)
+        # MISSCHIEN LATER AANZETTEN VOOR ALGO1 EN RANDOM
+        # self.create_board()
+
         # self.display_board()
     
 
