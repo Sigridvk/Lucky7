@@ -17,7 +17,7 @@ class Breadth_first():
         # Initialize list that will contain possible moves
         self._all_moves = []
         
-        for key in  self.rushhourgame_init.dict:
+        for key in self.rushhourgame_init.dict:
 
             if self.rushhourgame_init.dict[key]["orientation"] == 'V':
                 self._all_moves.append(str(key) + '1' + 'U')

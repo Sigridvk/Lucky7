@@ -27,12 +27,25 @@ def histogram(input_file):
 
     # Create dataframe from 
     df = pd.read_csv(input_file, header=None)
+<<<<<<< HEAD
     
     # Sort dataframe
     df.sort_values([0],ascending = True, inplace = True)
     
     # Create bins
     df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
+=======
+    # Dataframe sorteren
+    df.sort_values(
+        [0],
+        ascending=True,
+        inplace=True  # sortering van het originele dataframe aanpassen
+)
+
+    print(df.max())
+    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
+    # print(df)
+>>>>>>> 719c57acc05376afe47b10795e789ad6564587a8
     bin_counts = df['bins'].value_counts().sort_index()
     # print(bin_counts)
 
@@ -51,15 +64,26 @@ def histogram(input_file):
     if os.path.exists('output/graphs2/graph.png'):
         i += 1
 <<<<<<< HEAD
+<<<<<<< HEAD
         plt.savefig(f'output/graphs2/9x9_MET_graph_{i}.png', bbox_inches = 'tight')
 
     else:
         plt.savefig('output/graphs/graph.png')
 =======
+<<<<<<< HEAD
+        plt.savefig(f'output/graphs/graph_{i}.png', bbox_inches = 'tight')
+    else:
+        plt.savefig('output/graphs/graph.png', bbox_inches = 'tight')
+=======
+        plt.savefig(f'output/graphs2/9x9_MET_graph_{i}.png', bbox_inches = 'tight')
+>>>>>>> 719c57acc05376afe47b10795e789ad6564587a8
+=======
         plt.savefig(f'output/graphs2/12x12_ZONDER_graph_{i}.png', bbox_inches = 'tight')
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
     else:
 >>>>>>> 382ee80cfe69382e9e722478af9eac2561a1cd04
         plt.savefig('output/graphs2/9x9_MET_graph.png', bbox_inches = 'tight')
+>>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
 
     # plt.savefig('output/graphs/graph_', bbox_inches = 'tight')
     # plt.show()
@@ -71,10 +95,33 @@ def histogram(input_file):
 >>>>>>> 382ee80cfe69382e9e722478af9eac2561a1cd04
     data = {'mean': [df[0].mean()], 'median': [df[0].median()]}
     df2 = pd.DataFrame(data)
+<<<<<<< HEAD
+<<<<<<< HEAD
+    df2.to_csv("output/algo_1/test_mean_and_median_forward_9x9.csv", index=False)
+=======
+    df2.to_csv("output/algo_1/test_mean_and_median_6x6rodeauto.csv", index=False)
+>>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
+=======
     df2.to_csv("output/algo_1/test_mean_and_median_12x12_ZONDER.csv", index=False)
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
 
+<<<<<<< HEAD
+    d = {"shortest_route": [df[0].min()], 'longest_route': [df[0].max()]}
+=======
     d = {"shortest_route": [df[0].min()], "longest_route": [df[0].max()]}
+>>>>>>> c1ff6a3e115ca4179ad6569df76a7f1aab88ca05
     df3 = pd.DataFrame(data = d)
+<<<<<<< HEAD
+<<<<<<< HEAD
+    df3.to_csv("output/algo_1/test_shortest_route_forward_9x9.csv", index=False)
+
+histogram("output/algo_1/test2.csv")
+=======
+    df3.to_csv("output/algo_1/test_shortest_route3_6x6rodeauto.csv", index=False)
+
+histogram("output/algo_1/test_6x6METrodeauto.csv")
+>>>>>>> 3681b41e11098d004b12613bebda0c2a9b67717c
+=======
     df3.to_csv("output/algo_1/test_shortest_route3_12x12_ZONDER.csv", index=False)
 
 <<<<<<< HEAD
@@ -97,4 +144,8 @@ if __name__ == "__main__":
     histogram("output/algo_1/test_6x6METrodeauto.csv")
 =======
 histogram("output/algo_1/ZONDER_algo2_12x12_7_1000times.csv")
+<<<<<<< HEAD
 >>>>>>> 382ee80cfe69382e9e722478af9eac2561a1cd04
+=======
+>>>>>>> 860164dffd31cce9988fb2b0b757a43ef64d222d
+>>>>>>> 719c57acc05376afe47b10795e789ad6564587a8

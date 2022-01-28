@@ -12,7 +12,7 @@ import copy
 import csv
 import math
 import sys
-import turtle
+# import turtle
 
 # sys.path.append("../")
 
@@ -157,17 +157,17 @@ class rushhour():
         Takes the board as parameter.
         Returns nothing.
         """
-        board = self._board
-        window = turtle.Screen()
-        myPen = turtle.Turtle()
-        # # show the board in the terminal with lists in a list
-        # for row in board:
-        #     print(row)
-        # print()
+        # board = self._board
+        # window = turtle.Screen()
+        # myPen = turtle.Turtle()
+        # # # show the board in the terminal with lists in a list
+        # # for row in board:
+        # #     print(row)
+        # # print()
 
-        # show the board in turtle, 30 = width squares, 6 = length board
-        draw(board, myPen, window, 0)
-        window.update()
+        # # show the board in turtle, 30 = width squares, 6 = length board
+        # draw(board, myPen, window, 0)
+        # window.update()
 
 
     def solved(self):

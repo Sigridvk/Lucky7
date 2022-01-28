@@ -4,7 +4,7 @@ from time import sleep
 from ..classes.rushhour import rushhour
 import algo1
 import csv
-
+import re
 
 class Breadth_first1():
 
@@ -89,10 +89,36 @@ class Breadth_first1():
             if self._rushhourgame.solved():
                 print(f"Oplossing: {all_steps}")
                 all_steps.append('A-1')
+                all_steps.append('B-1')
+                print(all_steps)
+
+                # matches = []
+                # character = ["-"]
+                # for i in all_steps:
+                #     str_arr = list(i)
+                #     for j in character:
+                #         if j in str_arr:
+                #             tmp = i
+                #             matches.append(tmp)
+                
+                # print(matches)
+                for i in all_steps:
+                    # print(re.split('-',i))
+                    x = i.split("-")
+                    if len(x) == 2:
+                        int(x[1]) * -1
+
+                    print(x)
+                    
+                    
                 with open(f'output/bfa/best_solution_{self._game}.csv','w') as out:
                     csv_out=csv.writer(out)
                     csv_out.writerow(['car','move'])
                     for row in all_steps:
+                        # for j in character:
+                        #     if j in all_steps:
+                        #         tmp = row
+
                         csv_out.writerow(row)
                 break
             # sleep(0.5)
