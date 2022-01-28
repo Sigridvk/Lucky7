@@ -20,7 +20,6 @@ def draw(board, myPen, window, sleep):
 def fill_grid(width, grid_length, board, myPen, window):
     topLeft_x=-150
     topLeft_y=150
-    myPen.penup()
     myPen.setheading(0)
     myPen.goto(topLeft_x,topLeft_y-width)
     myPen.pendown()
