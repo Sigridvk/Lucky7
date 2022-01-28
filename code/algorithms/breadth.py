@@ -99,15 +99,9 @@ class Breadth_first1():
             # print(len(all_steps))   
             if self._rushhourgame.solved():
                 print(f"Oplossing: {all_steps}")
-<<<<<<< HEAD
-                all_steps.append('A-1')
-                all_steps.append('B-1')
-                print(f"all_steps: {all_steps}")
-=======
                 # all_steps.append('A-1')
                 # all_steps.append('B-1')
                 # print(all_steps)
->>>>>>> ebb8635564ef2d4b0357a34fc07576c1f416a4de
 
                 # matches = []
                 # character = ["-"]
@@ -119,36 +113,6 @@ class Breadth_first1():
                 #             matches.append(tmp)
                 
                 # print(matches)
-<<<<<<< HEAD
-
-                # q = []
-                # for i in all_steps:
-                #     # print(re.split('-',i))
-                #     x = i.split("-")
-
-                #     if len(x) == 2:
-                #         x[1] = "-" + str(int(x[1]))
-
-                #     q.append(x)
-                # print(q)
-
-                # flattened  = [val for sublist in q for val in sublist]
-                # print(f"flattened list: {flattened}")
-                    
-                with open(f'output/bfa/best_solution_{self._game}.csv','w') as out:
-                    csv_out=csv.writer(out)
-                    csv_out.writerow(['car','move'])
-
-                    for row in all_steps:
-                        if '-' in row:
-                            bits = row.split("-")
-                            j = [bits[0]] + ['-'+ l for l in bits[1:]]
-                            csv_out.writerow(j)
-                        else:
-                            csv_out.writerow(row)
-
-                        
-=======
                 # for i in all_steps:
                 #     # print(re.split('-',i))
                 #     x = i.split("-")
@@ -182,7 +146,6 @@ class Breadth_first1():
 
                     #     writer.writerow(row)
 
->>>>>>> ebb8635564ef2d4b0357a34fc07576c1f416a4de
                 break
 
             # df = pd.read_csv(f'output/bfa/best_solution_{self._game}.csv')
