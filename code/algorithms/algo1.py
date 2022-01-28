@@ -8,7 +8,7 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 """
 
 import random
-from ..classes.rushhour import rushhour
+# from ..classes.rushhour import rushhour
 
 def random_car(cars_dict):
     """

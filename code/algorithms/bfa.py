@@ -3,6 +3,7 @@ import copy
 import queue
 from ..classes.rushhour import rushhour
 import re
+# from algo1 import check_move
 
 
 class Breadth_first():
@@ -40,7 +41,7 @@ class Breadth_first():
         for index in range(0, len(self._state), n):
             splitted_string.append(self._state[index : index + n])
 
-        # print(splitted_string)
+        print(splitted_string)
         return splitted_string
     
     
@@ -77,7 +78,7 @@ class Breadth_first():
         """
         """
 
-        depth = 40
+        depth = 5
 
         # Waarom wordt queue niet gepakt?
         queue_ = queue.Queue()
@@ -94,7 +95,7 @@ class Breadth_first():
 
             self.rushhourgame = rushhour(self._output, self._game_name)
 
-            # print(state)
+            print(state)
 
             if len(state) < depth:
                 for i in self._all_moves:
