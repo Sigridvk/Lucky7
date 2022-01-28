@@ -97,9 +97,9 @@ class Breadth_first1():
                 break
             # sleep(0.5)
             self._queue_states.put({child2:self._rushhourgame2.dict})
-        
-            
 
+ 
+         
     def solved(self):
         if self._rushhourgame.solved():
             print("solved")
@@ -137,11 +137,3 @@ class Breadth_first1():
             # path += last_step
             # print(f"path: {path}")
 
-            
-
-
-
-
-
-
-# bfa = Breadth_first('test_bfa.csv', 'Rushhour_6x6_1', 1)
