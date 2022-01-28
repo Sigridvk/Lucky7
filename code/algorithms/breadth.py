@@ -14,9 +14,13 @@ class Breadth_first1():
         self._game = game
         self._rushhourgame = rushhour(output, game)
         self._depth = depth
+        self._archive = []
 
         self._queue_states = queue.Queue()
         self._board = copy.deepcopy(self._rushhourgame.create_board())
+        
+
+        print(self._board)
         self._current_board = self._board
         self._queue_states.put({0:self._rushhourgame.dict})
         
@@ -68,6 +72,7 @@ class Breadth_first1():
         self._depth += 1
         # print(self._depth)
         for child in children:
+            str_bord = ""
             car = child[0]
             step = int(child[1:])
             child1 = car + str(step)
@@ -148,6 +153,9 @@ class Breadth_first1():
 
                 break
             # sleep(0.5)
+            str_bord = board_to_string(self._rushhourgame)
+            str_bord2 = board_to_string(self._rushhourgame2)
+            print(f"str_bord: {str_bord}")
             self._queue_states.put({child2:self._rushhourgame2.dict})
 
  
@@ -186,10 +194,23 @@ class Breadth_first1():
             # state_dict.create_board()
             # print(f"state: {state_dict}")
             self._rushhourgame.dict = state_dict
+            # str_bord = string_board(self._rushhourgame)
+            # print(f"str_bord: {str_bord}")
             # print("Checking if solved")
             # print(self._rushhourgame._board)
-            
+            # if not str_bord in self._archive:
             self.build_children(all_steps)
+            #     self._archive.append(str_bord)
+            # else:
+            #     print(f"str_bord1 {str_bord}")
             # path += last_step
             # print(f"path: {path}")
 
+def board_to_string(game):
+    bord = ""
+    for i in range(len(game._board)):
+        for j in range(len(game._board)):
+            if game._board[i][j] == '':
+                game._board[i][j] = '.'
+            bord += game._board[i][j]
+    return (bord)
