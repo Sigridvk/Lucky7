@@ -22,7 +22,8 @@ class Breadth_first1():
         
         self._state = self._board
 
-        
+        self.__depth = 0
+
     
     def all_moves(self, last_step):
         self._all_moves = []
@@ -40,7 +41,7 @@ class Breadth_first1():
                 move1 = car + str(move)
                 if move1 != last_step:
                     self._all_moves.append(move1)
-        print(f"Possible moves: {self._all_moves}")
+        # print(f"Possible moves: {self._all_moves}")
         # print()
         return(self._all_moves)
     
@@ -53,14 +54,14 @@ class Breadth_first1():
         lengte = len(all_steps) - 3
         last_step = all_steps[lengte:]
         last_step = last_step[0]
-        print(f"Last_step: {last_step}")
+        # print(f"Last_step: {last_step}")
         if last_step[0] == '_':
             str1 = ""
             last_step= last_step[1:]
             for i in last_step:
                 str1 += i
             last_step = str1
-            print(f"Last_Step in if {last_step}")
+            # print(f"Last_Step in if {last_step}")
 
         children = self.all_moves(last_step)
 
@@ -70,27 +71,37 @@ class Breadth_first1():
             car = child[0]
             step = int(child[1:])
             child1 = car + str(step)
-            print(f"child1 : {child1}")
+            # print(f"child1 : {child1}")
             listToStr ='_'.join([str(elem) for elem in all_steps])
-            print(f"list to str: {listToStr}")
+            # print(f"list to str: {listToStr}")
             child2 = listToStr
             child2 += '_' + child1
-            print(f"child2: {child2}")
+            # print(f"child2: {child2}")
             # print(car, step)
             self._rushhourgame2 = copy.deepcopy(self._rushhourgame)
             self._rushhourgame2.create_board()
             # self._rushhourgame2.display_board()
             self._rushhourgame2._path += child2
-            print(self._rushhourgame2._path)
+            # print(self._rushhourgame2._path)
             self._rushhourgame2.move(car, step)
             # self._rushhourgame2._board = copy.deepcopy(self._rushhourgame2.create_board())
             # self._rushhourgame.display_board()
             # sleep(1)
+            
+            # print(f"length: {len(all_steps)}")
+            # print(f"depth: {self.__depth}")
+
+            if len(all_steps) > self.__depth:
+                self.__depth = copy.deepcopy(len(all_steps))
+                print(self.__depth)
+            
+            
+            # print(len(all_steps))   
             if self._rushhourgame.solved():
                 print(f"Oplossing: {all_steps}")
-                all_steps.append('A-1')
-                all_steps.append('B-1')
-                print(all_steps)
+                # all_steps.append('A-1')
+                # all_steps.append('B-1')
+                # print(all_steps)
 
                 # matches = []
                 # character = ["-"]
@@ -102,24 +113,39 @@ class Breadth_first1():
                 #             matches.append(tmp)
                 
                 # print(matches)
-                for i in all_steps:
-                    # print(re.split('-',i))
-                    x = i.split("-")
-                    if len(x) == 2:
-                        int(x[1]) * -1
+                # for i in all_steps:
+                #     # print(re.split('-',i))
+                #     x = i.split("-")
+                #     if len(x) == 2:
+                #         int(x[1]) * -1
 
-                    print(x)
-                    
-                    
+                    # print(x)
+
+
+                # print(len(all_steps))                
+
+                # Write best solution to an output file
                 with open(f'output/bfa/best_solution_{self._game}.csv','w') as out:
-                    csv_out=csv.writer(out)
-                    csv_out.writerow(['car','move'])
-                    for row in all_steps:
-                        # for j in character:
-                        #     if j in all_steps:
-                        #         tmp = row
+                    writer = csv.writer(out)
+                    writer.writerow(['car','move'])
+                    
+                    # Remove begin state (0) from list
+                    all_steps.remove('0')
 
-                        csv_out.writerow(row)
+                    for element in all_steps:
+                        car_ = element[0]
+                        step_ = element[1:]
+                        writer.writerow([car_, step_])
+
+                    # print(all_steps)
+
+                    # for row in all_steps:
+                    #     # for j in character:
+                    #     #     if j in all_steps:
+                    #     #         tmp = row
+
+                    #     writer.writerow(row)
+
                 break
             # sleep(0.5)
             self._queue_states.put({child2:self._rushhourgame2.dict})
@@ -139,17 +165,21 @@ class Breadth_first1():
         while self._queue_states:
             if self.solved():
                 break
+
             state_dict = self.get_next_state()
-            print(f"state dict: {state_dict}")
+            # print(f"state dict: {state_dict}")
+
             # print(f"state_dict {state_dict}")
             all_steps = list(state_dict.keys())[0]
             all_steps = str(all_steps)
+
             # all_steps += all_steps
-            print(f"all steps: {all_steps}")
+            # print(f"all steps: {all_steps}")
             all_steps = all_steps.split('_')
+
             # print(all_steps)
             last_step = all_steps[-1]
-            print(f"Last step {last_step}")
+            # print(f"Last step {last_step}")
             state_dict = list(state_dict.values())[0]
             
             
