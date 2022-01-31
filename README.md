@@ -4,7 +4,7 @@ Programmeertheorie
 ## Case Rush Hour
 Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend karakter. In een veld van dezelfde hoogte en breedte staat een rode auto, de jouwe, en die moet naar de uitgang, die recht voor je ligt. Maar andere voertuigen versperren de weg; auto’s van twee eenheden lang en trucks van drie eenheden lang, die alleen in hun rijrichting bewogen mogen worden. Ze mogen niet draaien. De opdracht is simpel: beweeg je auto naar buiten.
 
-6x6: game 1, game 2, game 3, hardest game  
+6x6: game 1, game 2, game 3
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour6x6_1.jpg" width="150" />
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour6x6_2.jpg" width="150" />
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour6x6_3.jpg" width="150" />
