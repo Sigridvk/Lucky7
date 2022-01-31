@@ -9,10 +9,7 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
 import random
 import sys
-
 sys.path.append("../")
-
-# from ..classes.rushhour import rushhour
 from classes.rushhour import rushhour
 
 def random_car(cars_dict):
