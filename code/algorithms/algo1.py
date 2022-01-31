@@ -8,7 +8,12 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 """
 
 import random
+import sys
+
+sys.path.append("../")
+
 # from ..classes.rushhour import rushhour
+from classes.rushhour import rushhour
 
 def random_car(cars_dict):
     """
@@ -129,47 +134,50 @@ def random_algorithm(dict, board):
     return [car, step]
 
 
-def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
+def run_algorithm(output, game, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
 # def run_algorithm(runs, game):
     """
     """
 
     # Loop through algorithm n times
-    # for i in range(runs):
+    for i in range(runs):
 
-    counter = 0
+        rushhourgame = rushhour(output, game)
+
+        counter = 0
 
     # Infinite loop to play game, breaks when solution is found
-    while True:
+        while True:
 
-        # Initialize begin state board
-        board = rushhourgame.create_board()
+            # Initialize begin state board
+            board = rushhourgame.create_board()
 
-        # Check if the current game is solved, if so, break. Append total steps to list
-        if rushhourgame.solved():
-            solved_games.append(counter)
-            print(counter)
-            break
+                # Check if the current game is solved, if so, break. Append total steps to list
+            if rushhourgame.solved():
+                solved_games.append(counter)
+                break
+                
+                # Call first algorithm to decide which car to move
+            move_game = random_algorithm(rushhourgame.dict, board)
+            step = move_game[1]
+            car = move_game[0]
+
+            # If the step-size is 0, begin again, else move that car
+            if step == 0:
+                pass
+            else:
+                rushhourgame.move(car, step)
+                counter += 1
+
+            # Check whether the current game is run in the least amount of steps
+            if smallest_amount_steps == None or smallest_amount_steps > counter:
+                
+                # Redefine smallest_amount_steps and save the steps from this game
+                smallest_amount_steps = counter
+                steps_from_smallest_game = rushhourgame.moves
+                # print(steps_from_smallest_game)
         
-        # Call first algorithm to decide which car to move
-        move_game = random_algorithm(rushhourgame.dict, board)
-        step = move_game[1]
-        car = move_game[0]
-
-        # If the step-size is 0, begin again, else move that car
-        if step == 0:
-            pass
-        else:
-            rushhourgame.move(car, step)
-            counter += 1
-
-    # Check whether the current game is run in the least amount of steps
-    if smallest_amount_steps == None or smallest_amount_steps > counter:
-        
-        # Redefine smallest_amount_steps and save the steps from this game
-        smallest_amount_steps = counter
-        steps_from_smallest_game = rushhourgame.moves
+    print(solved_games)
 
     return [steps_from_smallest_game, solved_games]
-    
     

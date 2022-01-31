@@ -71,8 +71,8 @@ class Breadth_first1():
             # Append moves found for particular car to the all_moves list
             for move in moves:
                 move1 = car + str(move)
-                if move1 != last_step:
-                    self._all_moves.append(move1)
+                # if move1 != last_step:
+                self._all_moves.append(move1)
         
         return(self._all_moves)
     
@@ -209,7 +209,6 @@ class Breadth_first1():
             # Make the 'next_dict' the 'current_dict'
             self._rushhourgame.dict = state_dict
 
-            
             # Create children from current state
             self.build_children(all_steps)
 

@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     rushhourgame = rushhour("test.csv", "Rushhour6x6_1")
 
-    reader = csv.reader(open("output_moves.csv"))
+    reader = csv.reader(open("best_solution_Rushhour6x6_1.csv"))
     
     rushhourgame.create_board
     rushhourgame.display_board()
