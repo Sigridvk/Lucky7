@@ -8,7 +8,12 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 """
 
 import random
+import sys
+
+sys.path.append("../")
+
 # from ..classes.rushhour import rushhour
+from classes.rushhour import rushhour
 
 def random_car(cars_dict):
     """
@@ -129,13 +134,15 @@ def random_algorithm(dict, board):
     return [car, step]
 
 
-def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
+def run_algorithm(output, game, runs, smallest_amount_steps, steps_from_smallest_game, solved_games):
 # def run_algorithm(runs, game):
     """
     """
 
     # Loop through algorithm n times
     for i in range(runs):
+
+        rushhourgame = rushhour(output, game)
 
         counter = 0
 
@@ -168,6 +175,9 @@ def run_algorithm(rushhourgame, runs, smallest_amount_steps, steps_from_smallest
             # Redefine smallest_amount_steps and save the steps from this game
             smallest_amount_steps = counter
             steps_from_smallest_game = rushhourgame.moves
+            # print(steps_from_smallest_game)
+    
+    print(solved_games)
 
     return [steps_from_smallest_game, solved_games]
     
