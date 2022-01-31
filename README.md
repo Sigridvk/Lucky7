@@ -17,8 +17,8 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 12x12: game 7 
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour12x12_1.jpg" width="150" />
 
-## Run the program
 
+## Run the program
 Roep het programma op deze manier aan:
 `python3 rushhour.py -g GAME -o OUTPUT -a ALGORITHM [-n NUMER_OF_RUNS]`
 
