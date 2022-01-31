@@ -27,14 +27,6 @@ def histogram(input_file):
 
     # Create dataframe from 
     df = pd.read_csv(input_file, header=None)
-<<<<<<< HEAD
-    
-    # Sort dataframe
-    df.sort_values([0],ascending = True, inplace = True)
-    
-    # Create bins
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
-=======
     # Dataframe sorteren
     df.sort_values(
         [0],
@@ -45,7 +37,6 @@ def histogram(input_file):
     print(df.max())
     df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
     # print(df)
->>>>>>> 719c57acc05376afe47b10795e789ad6564587a8
     bin_counts = df['bins'].value_counts().sort_index()
     # print(bin_counts)
 
