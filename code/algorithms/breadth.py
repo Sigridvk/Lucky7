@@ -146,7 +146,7 @@ class Breadth_first1():
                 print(f"Oplossing: {all_steps}")            
 
                 # Write best solution to an output file
-                with open(f'output/bfa/best_solution_{self._game}.csv','w') as out:
+                with open(f'output/breadth/best_solution_{self._game}.csv','w') as out:
                     writer = csv.writer(out)
                     writer.writerow(['car','move'])
                     
@@ -209,6 +209,10 @@ class Breadth_first1():
             # Make the 'next_dict' the 'current_dict'
             self._rushhourgame.dict = state_dict
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 4c6977e836b634c5b3721758e2e7475d48c08e7d
             # Create children from current state
             self.build_children(all_steps)
 
