@@ -209,10 +209,6 @@ class Breadth_first1():
             # Make the 'next_dict' the 'current_dict'
             self._rushhourgame.dict = state_dict
 
-<<<<<<< HEAD
-            
-=======
->>>>>>> 7833a3dd31b95516addf07854cbdb662f5cc8841
             # Create children from current state
             self.build_children(all_steps)
 
