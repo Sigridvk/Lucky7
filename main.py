@@ -82,7 +82,7 @@ if __name__ == "__main__":
                 # Redefine smallest_amount_steps and save the steps from this game
                 smallest_amount_steps = game_greedy1._count_steps
                 steps_from_smallest_game = rushhourgame.moves
-                print(game_greedy1._count_steps)
+                # print(game_greedy1._count_steps)
 
             # add total steps of solved game to list
             solved_games.append(game_greedy1._count_steps)
@@ -112,7 +112,7 @@ if __name__ == "__main__":
                 # Redefine smallest_amount_steps and save the steps from this game
                 smallest_amount_steps = game_greedy2._count_steps
                 steps_from_smallest_game = rushhourgame.moves
-                print(game_greedy2._count_steps)
+                # print(game_greedy2._count_steps)
 
             # add total steps of solved game to list
             solved_games.append(game_greedy2._count_steps)
