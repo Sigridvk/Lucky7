@@ -79,17 +79,27 @@ class Greedy():
         return [car, step]
 
 
-    def run_random_greedy(self):
+    def run_random_greedy1(self):
+        """
+        """
+
         self._game.create_board()
+        # self._game.display_board()
         car = ""
         # self._count_steps = 0
         while not self._game.solved():
+
+            self._game.create_board()
+            # self._game.display_board()
+
+            # print("test")
         
         # for i in range(1):
             # if car == self.blocking_car:
             #     self.red_car_forward()
 
             if self._game.solved():
+                # print("solved")
                 break
 
             # while car != self.blocking_car:
@@ -112,11 +122,51 @@ class Greedy():
 
                 self._count_steps += 1
                 self._steps.append((car, step))
-            
-
-
-            # self._game.dict['X']['column'] = column_
     
+
+    def run_random_greedy2(self):
+        """
+        """
+        
+        self._game.create_board()
+        # self._game.display_board()
+        car = ""
+        # self._count_steps = 0
+        while not self._game.solved():
+
+            self._game.create_board()
+            # self._game.display_board()
+
+            # print("test")
+        
+        # for i in range(1):
+            if car == self.blocking_car:
+                self.red_car_forward()
+
+            if self._game.solved():
+                # print("solved")
+                break
+
+            # while car != self.blocking_car:
+            # move_game = algo1.random_algorithm(self._game.dict, self._game._board)
+
+            move_game = self.greedy_random_algorithm()
+            step = move_game[1]
+            car = move_game[0]
+
+            # If the step-size is 0, begin again, else move that car
+            if step == 0:
+                pass
+            elif move_game == self._last_step:
+                pass
+            else:
+                self._game.move(car, step)
+
+                # Save last step so that no move back will be made
+                self._last_step = [car, (step*-1)]
+
+                self._count_steps += 1
+                self._steps.append((car, step))
 
 
 
