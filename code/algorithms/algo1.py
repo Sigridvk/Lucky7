@@ -30,7 +30,6 @@ def check_move(car, cars_dict, board):
     """
     Returns a list of possible moves for a given car
     """
-    # print(f"checked_car = {car}")
 
     # List of all possible moves
     moves_list = []
@@ -38,8 +37,7 @@ def check_move(car, cars_dict, board):
     # Check orientation
     if cars_dict[car]['orientation'] == 'H':
         
-        # Define coordinates spot on the right side of the vehicle 
-        # row = cars_dict[car]['row'] - 1
+        # Define coordinates spot on the right side of the vehicle
         row = cars_dict[car]['row']
         column_right = cars_dict[car]['col'] + cars_dict[car]['length']
 
@@ -69,7 +67,6 @@ def check_move(car, cars_dict, board):
                 moves_list.append(i -  column_left)
             else:
                 break
-
 
     # Check orientation
     if cars_dict[car]['orientation'] == 'V':
@@ -107,7 +104,6 @@ def check_move(car, cars_dict, board):
 
                     # If the spot is empty, appen possible move to list
                     moves_list.append( -1 * (i - row_down + 1))
-
                 else:
                     break
     return moves_list
@@ -172,9 +168,6 @@ def run_algorithm(output, game, runs, smallest_amount_steps, steps_from_smallest
             # Redefine smallest_amount_steps and save the steps from this game
             smallest_amount_steps = counter
             steps_from_smallest_game = rushhourgame.moves
-            # print(steps_from_smallest_game)
-    
-    print(solved_games)
 
     return [steps_from_smallest_game, solved_games]
     

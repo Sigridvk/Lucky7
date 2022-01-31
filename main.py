@@ -11,7 +11,6 @@ Usage: python3 rushhour.py -g GAME -o OUTPUT -a ALGORITHM [-n NUMER_OF_RUNS]
 
 import argparse
 from random import random
-# from code.algorithms import algo1
 import time
 import datetime
 from sys import argv
@@ -37,16 +36,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Solve a rushhour game')
     parser.add_argument("-g", "--game", type=str, help="gamefile name", required=True)
     parser.add_argument("-o", "--output", help="output file (csv)", required=True)
-    parser.add_argument("-n","--runs", type=int, default=1, help="number of runs")
     parser.add_argument("-a","--algorithm", type=str, help="choose algorithm", required=True)
+    parser.add_argument("-n","--runs", type=int, default=1, help="number of runs")
 
     # Parse the command line arguments
     args = parser.parse_args()
+
+    # print(len(argv))
     
     # Check command line arguments
-    if len(argv) not in [5,7]:
+    if len(argv) not in [7,9]:
         print(len(argv))
-        print("Usage: python3 rushhour.py -g GAME -o OUTPUT [-n NUMER_OF_RUNS]")
+        print("Usage: python3 rushhour.py -g GAME -o OUTPUT -a ALGORITHM [-n NUMER_OF_RUNS]")
         exit(1)
 
     if args.algorithm == 'random':
@@ -57,37 +58,66 @@ if __name__ == "__main__":
         end_time = time.time()
         time_passed = end_time - start_time
 
-        save_data.save_data(random[0], random[1], time_passed, args.game)
+        save_data.save_data(random[0], random[1], args.game, args.algorithm)
 
-    elif args.algorithm == 'greedy':
+    elif args.algorithm == 'greedy1':
         for i in range(args.runs):
 
-        # initialize instance of class rushhour
+            # initialize instance of class rushhour
             rushhourgame = rushhour(args.output, args.game)
 
+            game_greedy1 = Greedy(rushhourgame)
+            # if (i % 50) == 0:
+            #     print(i)
 
-        # initialize instance of class Greedy --> MISSCHIEN WILLEN WE DIT DUS ELKE KEER EEN ANDERE INSTANTIE MAKEN, NU OVERSCHRIJFT HIJ HEM
-        game_algo1 = Greedy(rushhourgame)
-        # if (i % 50) == 0:
-        #     print(i)
+            # # initialize instance of class rushhour
+            # rushhourgame = rushhour(args.output, args.game)
 
-        # initialize instance of class rushhour
-        rushhourgame = rushhour(args.output, args.game)
+            # run random greedy algorithm
+            game_greedy1.run_random_greedy1()
+
+            # Check whether the current game is run in the least amount of steps
+            if smallest_amount_steps == None or smallest_amount_steps > game_greedy1._count_steps:
+                
+                # Redefine smallest_amount_steps and save the steps from this game
+                smallest_amount_steps = game_greedy1._count_steps
+                steps_from_smallest_game = rushhourgame.moves
+                print(game_greedy1._count_steps)
+
+            # add total steps of solved game to list
+            solved_games.append(game_greedy1._count_steps)
+
+        save_data.save_data(steps_from_smallest_game, solved_games, args.game, args.algorithm)
 
 
-        # run random greedy algorithm
-        game_algo1.run_random_greedy()
+    elif args.algorithm == 'greedy2':
+        for i in range(args.runs):
 
-        # Check whether the current game is run in the least amount of steps
-        if smallest_amount_steps == None or smallest_amount_steps > game_algo1._count_steps:
-            
-            # Redefine smallest_amount_steps and save the steps from this game
-            smallest_amount_steps = game_algo1._count_steps
-            steps_from_smallest_game = rushhourgame.moves
+            # initialize instance of class rushhour
+            rushhourgame = rushhour(args.output, args.game)
 
-        # add total steps of solved game to list
-        solved_games.append(game_algo1._count_steps)
+            game_greedy2 = Greedy(rushhourgame)
+            # if (i % 50) == 0:
+            #     print(i)
 
+            # # initialize instance of class rushhour
+            # rushhourgame = rushhour(args.output, args.game)
+
+            # run random greedy algorithm
+            game_greedy2.run_random_greedy2()
+
+            # Check whether the current game is run in the least amount of steps
+            if smallest_amount_steps == None or smallest_amount_steps > game_greedy2._count_steps:
+                
+                # Redefine smallest_amount_steps and save the steps from this game
+                smallest_amount_steps = game_greedy2._count_steps
+                steps_from_smallest_game = rushhourgame.moves
+                print(game_greedy2._count_steps)
+
+            # add total steps of solved game to list
+            solved_games.append(game_greedy2._count_steps)
+        
+        save_data.save_data(steps_from_smallest_game, solved_games, args.game, args.algorithm)
 
 
     elif args.algorithm == 'breadth':
@@ -121,7 +151,7 @@ if __name__ == "__main__":
 
 
     # #     # initialize instance of class Greedy --> MISSCHIEN WILLEN WE DIT DUS ELKE KEER EEN ANDERE INSTANTIE MAKEN, NU OVERSCHRIJFT HIJ HEM
-    # #     game_algo1 = Greedy(rushhourgame)
+    # #     game_greedy2 = Greedy(rushhourgame)
     # #     if (i % 50) == 0:
     # #         print(i)
 
@@ -130,17 +160,17 @@ if __name__ == "__main__":
 
 
     # #     # run random greedy algorithm
-    # #     game_algo1.run_random_greedy()
+    # #     game_greedy2.run_random_greedy()
 
     # #     # Check whether the current game is run in the least amount of steps
-    # #     if smallest_amount_steps == None or smallest_amount_steps > game_algo1._count_steps:
+    # #     if smallest_amount_steps == None or smallest_amount_steps > game_greedy2._count_steps:
             
     # #         # Redefine smallest_amount_steps and save the steps from this game
-    # #         smallest_amount_steps = game_algo1._count_steps
+    # #         smallest_amount_steps = game_greedy2._count_steps
     # #         steps_from_smallest_game = rushhourgame.moves
 
     # #     # add total steps of solved game to list
-    # #     solved_games.append(game_algo1._count_steps)
+    # #     solved_games.append(game_greedy2._count_steps)
 
     # # BREADTH FIRST
     # # initialize instance of class rushhour

@@ -71,33 +71,8 @@ def bar_chart_small_range(df, game_name, path, algorithm):
     Creates a bar chart with a large range of bins to an output file (png).
     """
 
-<<<<<<< HEAD
     # Create bins
     df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
-=======
-    # Create dataframe from 
-<<<<<<< HEAD
-    df = pd.read_csv(input_file, header=None)
-    # Dataframe sorteren
-    df.sort_values(
-        [0],
-        ascending=True,
-        inplace=True  # sortering van het originele dataframe aanpassen
-)
-
-    print(df.max())
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0])/4, 10).astype(int))
-    # print(df)
-=======
-    df = pd.read_csv(input, header=None)
-    
-    # Sort dataframe
-    df.sort_values([0],ascending = True, inplace = True)
-    
-    # Create bins
-    df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
->>>>>>> 7833a3dd31b95516addf07854cbdb662f5cc8841
->>>>>>> 515670efe7438e87b2156d7248fc9232535523b6
     bin_counts = df['bins'].value_counts().sort_index()
 
     plt.figure(figsize = (10, 5))
@@ -122,7 +97,7 @@ def write_info(input_file, algorithm, game_name, path):
     """
 
     # ------ Dit moet worden aangepast 
-    path_to_file = "output/algo_1/"
+    path_to_file = f"output/{algorithm}/"
     input = path_to_file + input_file
 
     # Create dataframe from 
@@ -155,10 +130,15 @@ if __name__ == "__main__":
     if len(argv) < 4:
         print(len(argv))
         print("Usage: python3 histogram.py -i INPUT -a ALGO")
+        print("ALGORITHM is either 'breadth', 'random', 'greedy1' or 'greedy2'")
         exit(1)
+    
+    input = args.input
+    index_R = input.find('R')
+    game_name = args.input[index_R:]
 
-    # define game name
-    game_name = args.input[13:]
+    # # define game name
+    # game_name = args.input[13:]
     game_name = game_name.strip(".csv")
 
     # Create directory for game
