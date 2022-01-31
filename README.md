@@ -15,7 +15,7 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour9x9_3.jpg" width="150" />
 
 12x12: game 7 
-<img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour12x12_1.jpg" width="150" />
+<img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour12x12_1.jpg" width="250" />
 
 
 ## Run the program
