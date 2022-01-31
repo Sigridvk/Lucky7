@@ -33,7 +33,8 @@ De beschikbare algoritmes zijn:
 - Greedy solver:
    - Er wordt random een voertuig op het bord gekozen. Als een voertuig geen stappen kan zetten wordt dit voertuig verwijderd uit lijst met mogelijke voertuigen. Mocht er een stap 
     worden gezet door een ander voertuig, dan kan voor de daaropvolgende move weer uit alle 
-    voertuigen gekozen worden                                                                                    - Een move van een voertuig kan niet meer ongedaan worden gemaakt door het voertuig gelijk weer terug te bewegen naar zijn vorige positie. Door de 
+    voertuigen gekozen worden.
+    - Een move van een voertuig kan niet meer ongedaan worden gemaakt door het voertuig gelijk weer terug te bewegen naar zijn vorige positie. Door de 
     laatste stap op te slaan kan er nu gecontroleerd worden of dit het geval is. Indien deze stap
     geselecteerd wordt, voeren we deze niet uit. En wordt opnieuw een voertuig gekozen.
     - Er wordt gecontroleerd of de rode auto naar voren kan worden gezet of door welk voertuig deze wordt geblokkeerd. Indien de rode auto naar voren kan, wordt deze stap uitgevoerd. Indien de rode auto wordt geblokkeerd, wordt onthouden welk voertuig dit is. Pas nadat dit voertuig een stap heeft gezet, wordt gecheckt of de rode auto naar voren kan bewegen. Tussendoor vindt het random-algoritme plaats zoals voorheen. De rode auto kan worden terug bewogen wanneer deze wordt geselecteerd door het random algoritme. Als de rode auto nooit wordt teruggeplaatst, is het probleem niet oplosbaar.
