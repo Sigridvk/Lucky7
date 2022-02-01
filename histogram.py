@@ -37,7 +37,6 @@ def run_information(df, path, algorithm):
 
     # Write mean and median to an outputfile (dit moet anders)
     df2.to_csv(f"{path}/run_information_{algorithm}_{game_name}.csv", index=False)
-    # df2.to_csv(f"{path}/run_information_{game_name}.csv", index=False)
 
 
 def bar_chart_large_range(df, game_name, path, algorithm):
@@ -45,7 +44,7 @@ def bar_chart_large_range(df, game_name, path, algorithm):
     Takes the dataframe with the amount of steps per game. the game name and the path to the directory as parameters.
     Creates a bar chart with a large range of bins to an output file (png).
     """
-    
+ 
     # Create bins
     df['bins'] = pd.cut(df[0], bins=np.linspace(0, (df.max()[0]), 10).astype(int))
     bin_counts = df['bins'].value_counts().sort_index()
@@ -97,11 +96,10 @@ def write_info(input_file, algorithm, game_name, path):
     Creates a bar chart with a large range of bins to an output file (png).
     """
 
-    # ------ Dit moet worden aangepast 
     path_to_file = f"output/{algorithm}/"
     input = path_to_file + input_file
 
-    # Create dataframe from 
+    # Create dataframe
     df = pd.read_csv(input, header=None)
     
     # Sort dataframe
@@ -144,7 +142,7 @@ if __name__ == "__main__":
 
     # Create directory for game
     directory = f"{game_name} - {args.algo}"
-    parent_dir = "output/"
+    parent_dir = f"output/{args.algo}"
     path = os.path.join(parent_dir, directory) 
 
     # Only create the directory if it does not yet exist
@@ -152,5 +150,7 @@ if __name__ == "__main__":
         os.mkdir(path)
     except FileExistsError:
         pass
+
+    print(path)
 
     write_info(args.input, args.algo, game_name, path)

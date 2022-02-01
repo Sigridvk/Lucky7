@@ -4,33 +4,23 @@
  Programmeertheorie
  Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
- - Contains the class rushhour.
+ - Contains the class Rushhour.
 """
  
 import os
-import copy
+import copy 
 import csv
 import math
 import sys
 import turtle
 
-# sys.path.append("../")
-
-# from ..visualisation.draw import draw
-
-
-# Global variable for the total steps per solved game
-solved_games = []
-
-# Global variable for the game with smallest amount of steps
-smallest_amount_steps = None
-
-steps_from_smallest_game = []
+sys.path.append("../")
+from visualisation.draw import draw
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-# window = turtle.Screen()
-# myPen = turtle.Turtle()
+window = turtle.Screen()
+myPen = turtle.Turtle()
 
 
 class Rushhour():
@@ -70,6 +60,7 @@ class Rushhour():
 
     def create_board(self):
             """
+            Takes no parameter other than self.
             Creates the gameboard by extracting data from the nested dictionary with information about the state of the board.
             Takes no parameters other than self.
             Returns the gameboard.
@@ -90,9 +81,7 @@ class Rushhour():
                 # Define vehicle properties
                 name = vehicle
                 orientation = self.dict[vehicle]["orientation"]
-                # col = self.dict[vehicle]["col"] - 1
                 col = self.dict[vehicle]["col"]
-                # row = self.dict[vehicle]["row"] - 1
                 row = self.dict[vehicle]["row"]
                 length = self.dict[vehicle]["length"]
 
@@ -119,9 +108,6 @@ class Rushhour():
         Takes the vehicle and the number of steps the car has to take as parameters.
         Returns nothing.
         """
-
-        # print(f"car: {car}")
-        # print(f"car: {steps}")
         
         # Define move and append to moves
         move = (car, steps)
@@ -137,11 +123,6 @@ class Rushhour():
         else:
             # Redefine row coordinate vehicle
             self.dict[car]['row'] -= steps
-        
-        # MISSCHIEN LATER AANZETTEN VOOR ALGO1 EN RANDOM
-        # self.create_board()
-
-        # self.display_board()
     
 
     def display_board(self):
@@ -168,13 +149,12 @@ class Rushhour():
         Checks whether the current board is the solution.
         If the space next to the exit == 'X' the problem is solved.
         """
+
         board = self._board
+
         # Calculate the coordinates of the square before the exit as index
         exit_row = math.floor((self.size_board+1)/2) - 1
         exit_col = self.size_board-1
 
-
         if board[exit_row][exit_col] == 'X':
-            # self.display_board(board)
-            # print("You solved the puzzle! 1")
             return True
