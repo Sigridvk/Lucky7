@@ -15,7 +15,7 @@ from random import random
 import time
 from sys import argv
 from code import save_data
-from code.algorithms import algo1
+from code.algorithms import randomise
 from code.classes.rushhour import rushhour
 from code.algorithms.greedy import Greedy
 from code.algorithms.breadth import Breadth_first1
@@ -27,6 +27,7 @@ smallest_amount_steps = None
 steps_from_smallest_game = []
 
 
+# WORDT NOG NIET GEBRUIKT
 def save_steps_smallest_game(smallest_amount_steps, steps_from_smallest_game, stepcount):
     """
     """
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     if args.algorithm == 'random':
         start_time = time.time()
 
-        random = algo1.run_algorithm(args.game, args.runs)
+        random = randomise.run_algorithm(args.game, args.runs)
 
         end_time = time.time()
         time_passed = end_time - start_time
