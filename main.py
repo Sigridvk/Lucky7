@@ -51,8 +51,7 @@ if __name__ == "__main__":
     # Parse the command line arguments
     args = parser.parse_args()
 
-    # Check command line arguments
-    if len(argv) not in [5, 7]:
+    if len(argv) not in [7,9]:
         print(len(argv))
         print("Usage: python3 rmain.py -g GAME -a ALGORITHM [-n NUMER_OF_RUNS]")
         exit(1)
@@ -68,7 +67,7 @@ if __name__ == "__main__":
 
         save_data.save_data(random[0], random[1], args.game, args.algorithm)
 
-    # Run greedy1
+    # Run Greedy1
     elif args.algorithm == 'greedy1':
 
         # For-loop in range of runs
@@ -100,6 +99,8 @@ if __name__ == "__main__":
 
     # Run greedy2 
     elif args.algorithm == 'greedy2':
+        
+        # For loop in range of given runs 
         for run in range(args.runs):
 
             # initialize instance of class rushhour

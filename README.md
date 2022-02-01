@@ -24,29 +24,30 @@ Roep het programma op deze manier aan:
 
 De beschikbare algoritmes zijn:
 - Random solver: 
-Met behulp van ‘random.choice’ wordt er een voertuig op het bord gekozen. Vervolgens
-wordt met de functie check_move bepaald welke stappen het voertuig kan zetten. Als het
-voertuig: een stap naar voren, een stap naar achter, maar ook twee stappen naar achter kan
-maken, dan wordt deze lijst gegenereerd: [-2, -1, 1]. Uit de lijst wordt daarna, weer met
-random.choice , een stap gekozen en wordt deze gezet.
+   - Met behulp van ‘random.choice’ wordt er een voertuig op het bord gekozen. Vervolgens
+    wordt met de functie check_move bepaald welke stappen het voertuig kan zetten. Als het
+    voertuig: een stap naar voren, een stap naar achter, maar ook twee stappen naar achter kan
+    maken, dan wordt deze lijst gegenereerd: [-2, -1, 1]. Uit de lijst wordt daarna, weer met
+    random.choice , een stap gekozen en wordt deze gezet.
 
-- Greedy solver:
-Er wordt random een voertuig op het bord gekozen. Als een voertuig geen stappen kan zetten wordt dit voertuig verwijderd uit lijst met mogelijke voertuigen. Mocht er een stap 
-worden gezet door een ander voertuig, dan kan voor de daaropvolgende move weer uit alle 
-voertuigen gekozen worden
+- Greedy1 solver:
+   - Er wordt random een voertuig op het bord gekozen. Als een voertuig geen stappen kan zetten wordt dit voertuig verwijderd uit lijst met mogelijke voertuigen. Mocht er een stap 
+    worden gezet door een ander voertuig, dan kan voor de daaropvolgende move weer uit alle 
+    voertuigen gekozen worden.
+    - Een move van een voertuig kan niet meer ongedaan worden gemaakt door het voertuig gelijk weer terug te bewegen naar zijn vorige positie. Door de 
+    laatste stap op te slaan kan er nu gecontroleerd worden of dit het geval is. Indien deze stap
+    geselecteerd wordt, voeren we deze niet uit. En wordt opnieuw een voertuig gekozen.
 
-Een move van een voertuig kan niet meer ongedaan worden gemaakt door het voertuig gelijk weer terug te bewegen naar zijn vorige positie. Door de 
-laatste stap op te slaan kan er nu gecontroleerd worden of dit het geval is. Indien deze stap
-geselecteerd wordt, voeren we deze niet uit. En wordt opnieuw een voertuig gekozen.
-
-Er wordt gecontroleerd of de rode auto naar voren kan worden gezet of door welk voertuig deze wordt geblokkeerd. Indien de rode auto naar voren kan, wordt deze stap uitgevoerd. Indien de rode auto wordt geblokkeerd, wordt onthouden welk voertuig dit is. Pas nadat dit voertuig een stap heeft gezet, wordt gecheckt of de rode auto naar voren kan bewegen. Tussendoor vindt het random-algoritme plaats zoals voorheen. De rode auto kan worden terug bewogen wanneer deze wordt geselecteerd door het random algoritme. Als de rode auto nooit wordt teruggeplaatst, is het probleem niet oplosbaar.
+- Greedy2 solver:
+    - Hetzelfde als de Greedy1 solver met als toevoeging dat er wordt gecontroleerd of de rode auto naar voren kan worden gezet of door welk voertuig deze wordt geblokkeerd. Indien de rode auto naar voren kan, wordt deze stap uitgevoerd. Indien de rode auto wordt geblokkeerd, wordt onthouden welk voertuig dit is. Pas nadat dit voertuig een stap heeft gezet, wordt gecheckt of de rode auto naar voren kan bewegen. Tussendoor vindt het random-algoritme plaats zoals voorheen. De rode auto kan worden terug bewogen wanneer deze wordt geselecteerd door het random algoritme. Als de rode auto nooit wordt teruggeplaatst, is het probleem niet oplosbaar.
 
 - Breadth first search:
-Een belangrijk kenmerk van dit algoritme is, dat als er een oplossing gevonden wordt, dit de optimale (zomin mogelijk zetten) oplossing is. Echter, een breadth-first algoritme gebruikt ontzettend veel geheugen, dus hoe groter het bord, hoe langer het duurt. Ook kan het zelfs zijn dat het teveel geheugen kost en het algoritme bepaalde borden niet kan oplossen hierdoor Helaas heeft ons algoritme tot nu toe alleen de optimale oplossing gevonden voor borden van 6x6 en het eerste spelbord van 9x9. 
+    - Een belangrijk kenmerk van dit algoritme is, dat als er een oplossing gevonden wordt, dit de optimale (zomin mogelijk zetten) oplossing is. Echter, een breadth-first algoritme gebruikt ontzettend veel geheugen, dus hoe groter het bord, hoe langer het duurt. Ook kan het zelfs zijn dat het teveel geheugen kost en het algoritme bepaalde borden niet kan oplossen hierdoor Helaas heeft ons algoritme tot nu toe alleen de optimale oplossing gevonden voor borden van 6x6 en het eerste spelbord van 9x9. 
 
 Deze zijn respectievelijk aan te roepen in de command line als volgt: 
 `random`
-`greedy`
+`greedy1`
+`greedy2`
 `breadth`
 
 Bijvoorbeeld:
