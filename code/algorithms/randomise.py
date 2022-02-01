@@ -10,7 +10,7 @@ Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 import random
 import sys
 sys.path.append("../")
-from classes.rushhour import rushhour
+from classes.rushhour import Rushhour
 
 def random_car(cars_dict):
     """
@@ -145,7 +145,7 @@ def run_algorithm(game, runs):
     # Loop through algorithm n times
     for i in range(runs):
 
-        rushhourgame = rushhour(game)
+        rushhourgame = Rushhour(game)
         step_counter = 0
 
         # Infinite loop to play game, breaks when solution is found
