@@ -141,7 +141,8 @@ if __name__ == "__main__":
     game_name = game_name.strip(".csv")
 
     # Create directory for game
-    directory = f"{game_name} - {args.algo}"
+    # directory = f"{game_name} - {args.algo}"
+    directory = f"histogram - {game_name}"
     parent_dir = f"output/{args.algo}"
     path = os.path.join(parent_dir, directory) 
 
@@ -151,6 +152,6 @@ if __name__ == "__main__":
     except FileExistsError:
         pass
 
-    print(path)
+    # print(path)
 
     write_info(args.input, args.algo, game_name, path)

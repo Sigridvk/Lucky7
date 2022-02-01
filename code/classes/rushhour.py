@@ -14,13 +14,13 @@ import math
 import sys
 import turtle
 
-sys.path.append("../")
-from visualisation.draw import draw
+# sys.path.append("../")
+# from visualisation.draw import draw
 
 # Variables to display the board in turtle
 # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-window = turtle.Screen()
-myPen = turtle.Turtle()
+# window = turtle.Screen()
+# myPen = turtle.Turtle()
 
 
 class Rushhour():

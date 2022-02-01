@@ -49,6 +49,7 @@ class Greedy():
                 
                 # move the red car
                 self._game.move('X', 1)
+                self._game.create_board()
                 self._count_moves += 1
 
             # Redefine the blocking car and break loop
@@ -93,6 +94,7 @@ class Greedy():
 
             # Remove car from list when car could not move
             self._game._greedy_cars.remove(car)
+    
         return [car, move]
 
 
@@ -129,6 +131,7 @@ class Greedy():
             # Move the vehicle
             else:
                 self._game.move(vehicle, move)
+                self._game.create_board()
 
                 # Save last step so that no move back will be made
                 self._last_move = [vehicle, (move*-1)]
@@ -178,6 +181,7 @@ class Greedy():
             # Move the vehicle
             else:
                 self._game.move(vehicle, move)
+                self._game.create_board()
 
                 # Save last step so that no move back will be made
                 self._last_move = [vehicle, (move*-1)]

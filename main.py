@@ -19,6 +19,7 @@ from code.algorithms import randomise
 from code.classes.rushhour import Rushhour
 from code.algorithms.greedy import Greedy
 from code.algorithms.breadth import Breadth_first
+import datetime
 
 
 # Global variable for the total steps per solved game, game with smallest amount of steps, steps from the smallest game
@@ -82,6 +83,11 @@ if __name__ == "__main__":
             # run random greedy algorithm
             game_greedy1.run_random_greedy1()
 
+            # test
+            if (run % 5) == 0:
+                print(run)
+                # print(datetime.datetime.now())
+
             # Check whether the current game is run in the least amount of steps
             if smallest_amount_steps == None or smallest_amount_steps > game_greedy1._count_moves:
                 
@@ -107,6 +113,11 @@ if __name__ == "__main__":
             rushhourgame = Rushhour(args.game)
 
             game_greedy2 = Greedy(rushhourgame)
+
+            # test
+            if (run % 5) == 0:
+                print(run)
+                print(datetime.datetime.now())
 
             # run random greedy algorithm
             game_greedy2.run_random_greedy2()

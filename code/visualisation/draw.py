@@ -18,7 +18,7 @@ import os.path
 # Try to import the class Rushhour
 try:
     sys.path.append("../")
-    from Lucky7.code.classes.rushhour import rushhour
+    from Lucky7.code.classes.rushhour import Rushhour
 except:
     print(f"Could not import the rushhour class. Please edit the path and try again")
     exit(9)
@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     # Create a rushhour object
     try:
-        rushhourgame = rushhour("output.csv", args.game)
+        rushhourgame = Rushhour(args.game)
     except:
         print(f"An error occured: could not create rushhour game with the name: {args.game}. Please try again.")
         exit(2)
