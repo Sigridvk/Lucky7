@@ -133,12 +133,12 @@ if __name__ == "__main__":
         print("ALGORITHM is either 'breadth', 'random', 'greedy1' or 'greedy2'")
         exit(1)
     
-    input = args.input
-    index_R = input.find('R')
-    game_name = args.input[index_R:]
+    # input = args.input
+    # index_R = input.find('R')
+    # game_name = args.input[index_R:]
 
     # # define game name
-    # game_name = args.input[13:]
+    game_name = args.input[13:]
     game_name = game_name.strip(".csv")
 
     # Create directory for game
