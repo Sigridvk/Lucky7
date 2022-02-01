@@ -17,6 +17,7 @@ def random_car(cars_dict):
     Takes the dictionary with car/game information as parameter.
     Returns a random car from a dictionary of cars
     """
+
     return random.sample(cars_dict.items(), 1)
 
 
@@ -25,13 +26,14 @@ def random_move(moves_list):
     Takes the list with the moves a vehicle can make as parameter.
     Returns a random move from a list of possible moves
     """
+
     return random.choice(moves_list)
 
 
 def check_move(car, cars_dict, board):
     """
     Takes the car name, the dictionary with car/game information and the game board as parameters.
-    Returns a list of possible moves for a given car
+    Returns a list of possible moves for a given car.
     """
 
     # List of all possible moves
@@ -108,6 +110,7 @@ def check_move(car, cars_dict, board):
                     moves_list.append( -1 * (i - row_down + 1))
                 else:
                     break
+                
     return moves_list
 
 
