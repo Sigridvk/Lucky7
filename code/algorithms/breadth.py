@@ -16,20 +16,18 @@ import datetime
 
 class Breadth_first1():
 
-    def __init__(self, output, game, depth = 4):
+    def __init__(self, game, depth = 4):
         """
         """
 
         self._game = game
-        self._rushhourgame = rushhour(output, game)
+        self._rushhourgame = rushhour(game)
         self._depth = depth
         self._archive = set()
 
         self._queue_states = queue.Queue()
         self._board = copy.deepcopy(self._rushhourgame.create_board())
         
-
-        print(self._board)
         self._current_board = self._board
         self._queue_states.put({0:self._rushhourgame.dict})
         
@@ -52,13 +50,6 @@ class Breadth_first1():
         # Create empty list for moves
         self._all_moves = []
 
-        # Remove the move from the list that has just been made 
-        # if last_step != '0':
-        #     car1 = last_step[0]
-        #     step = int(last_step[1:])
-        #     step = step * -1
-        #     last_step = car1 + str(step)
-
         board = self._rushhourgame.create_board()
 
         # (Heb je het bord niet al door de bovenstaande regel code?)
@@ -71,7 +62,6 @@ class Breadth_first1():
             # Append moves found for particular car to the all_moves list
             for move in moves:
                 move1 = car + str(move)
-                # if move1 != last_step:
                 self._all_moves.append(move1)
         
         return(self._all_moves)
@@ -107,8 +97,7 @@ class Breadth_first1():
 
         # For-loop over children
         for child in children:
-            # print(f"children {children}")
-            # print(f"child: {child}")
+
             # Define car and step
             car = child[0]
             step = int(child[1:])
@@ -136,14 +125,9 @@ class Breadth_first1():
             # Prints depth once arrived at new depth
             if len(all_steps) > self.__depth:
                 self.__depth = copy.deepcopy(len(all_steps))
-                print(self.__depth)
-
-            # if self.__depth >= 12:
-                # print(f"test {datetime.datetime.now()}")
              
             # Checks whether solution is found
-            if self._rushhourgame.solved():
-                print(f"Oplossing: {all_steps}")            
+            if self._rushhourgame.solved():          
 
                 # Write best solution to an output file
                 with open(f'output/breadth/best_solution_{self._game}.csv','w') as out:
@@ -160,16 +144,10 @@ class Breadth_first1():
                 break      
 
             bord = board_to_string(self._rushhourgame2)
-            # print(bord)
-            # sleep(1)
-            # print(f"test2 {datetime.datetime.now()}")
         
             if bord not in self._archive:
-                # print("New bord not in archive")    
                 self._queue_states.put({path_:self._rushhourgame2.dict})
                 self._archive.add(bord)
-                # print(self._archive)
-        # print("uit forloop")
         
             
     def solved(self):
@@ -178,7 +156,6 @@ class Breadth_first1():
         """
 
         if self._rushhourgame.solved():
-            print("solved")
             return True
 
 
@@ -209,7 +186,6 @@ class Breadth_first1():
             # Make the 'next_dict' the 'current_dict'
             self._rushhourgame.dict = state_dict
 
-            
             # Create children from current state
             self.build_children(all_steps)
 
