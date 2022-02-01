@@ -3,25 +3,27 @@ breadth.py
 
 Programmeertheorie
 Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
+
+- 
 """
 
 import copy
 import queue
 from time import sleep
-from ..classes.rushhour import rushhour
-import algo1
+from ..classes.rushhour import Rushhour
+import randomise
 import csv
 import re
 import datetime
 
-class Breadth_first1():
+class Breadth_first():
 
     def __init__(self, game, depth = 4):
         """
         """
 
         self._game = game
-        self._rushhourgame = rushhour(game)
+        self._rushhourgame = Rushhour(game)
         self._depth = depth
         self._archive = set()
 
@@ -57,7 +59,7 @@ class Breadth_first1():
 
         # For-loop over all cars in dict
         for car in self._rushhourgame.dict:
-            moves = algo1.check_move(car, self._rushhourgame.dict, board)
+            moves = randomise.check_move(car, self._rushhourgame.dict, board)
             
             # Append moves found for particular car to the all_moves list
             for move in moves:

@@ -1,12 +1,17 @@
-# from ..classes.rushhour import rushhour
+"""
+breadth.py
 
-from . import algo1
+Programmeertheorie
+Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
+
+- 
+"""
+
+from . import randomise
 import random
 import copy
 
 class Greedy():
-    """
-    """
 
     def __init__(self, game):
         self._game = game
@@ -17,6 +22,8 @@ class Greedy():
 
 
     def red_car_forward(self):
+        """
+        """
         
         # Define coordinate right to red car
         column_ = self._game.dict['X']['col'] + 2
@@ -36,16 +43,9 @@ class Greedy():
 
     def greedy_random_car(self):
         """
-        Returns a random car from a dictionary of cars
+        Returns a random car from a dictionary of cars.
         """
         return random.choice(self._game._greedy_cars)
-
-
-    # def greedy_random_move(self):
-    # """
-    # Returns a random move from a list of possible moves
-    # """
-    # return random.choice(moves_list)
 
 
     def greedy_random_algorithm(self):
@@ -57,25 +57,21 @@ class Greedy():
         """
         
         car = self.greedy_random_car()
-        moves = algo1.check_move(car, self._game.dict, self._game._board)
+        moves = randomise.check_move(car, self._game.dict, self._game._board)
 
         if moves:
-            step = algo1.random_move(moves)
+            step = randomise.random_move(moves)
 
             # Append all cars to the list after a move has been made
             all_cars = self._game._greedy_cars_all
             all_cars = copy.deepcopy(all_cars)
-
             self._game._greedy_cars = all_cars
-            # print(f"all cars {all_cars}")
 
         else:
             step = 0
 
             # Remove car from list when car could not move
             self._game._greedy_cars.remove(car)
-            # print(f"not all cars {self._game._greedy_cars}")
-            
         return [car, step]
 
 
@@ -84,26 +80,13 @@ class Greedy():
         """
 
         self._game.create_board()
-        # self._game.display_board()
         car = ""
-        # self._count_steps = 0
         while not self._game.solved():
 
             self._game.create_board()
-            # self._game.display_board()
-
-            # print("test")
-        
-        # for i in range(1):
-            # if car == self.blocking_car:
-            #     self.red_car_forward()
 
             if self._game.solved():
-                # print("solved")
                 break
-
-            # while car != self.blocking_car:
-            # move_game = algo1.random_algorithm(self._game.dict, self._game._board)
 
             move_game = self.greedy_random_algorithm()
             step = move_game[1]
@@ -129,26 +112,17 @@ class Greedy():
         """
         
         self._game.create_board()
-        # self._game.display_board()
         car = ""
-        # self._count_steps = 0
+
         while not self._game.solved():
 
             self._game.create_board()
-            # self._game.display_board()
 
-            # print("test")
-        
-        # for i in range(1):
             if car == self.blocking_car:
                 self.red_car_forward()
 
             if self._game.solved():
-                # print("solved")
                 break
-
-            # while car != self.blocking_car:
-            # move_game = algo1.random_algorithm(self._game.dict, self._game._board)
 
             move_game = self.greedy_random_algorithm()
             step = move_game[1]

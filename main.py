@@ -16,9 +16,9 @@ import time
 from sys import argv
 from code import save_data
 from code.algorithms import randomise
-from code.classes.rushhour import rushhour
+from code.classes.rushhour import Rushhour
 from code.algorithms.greedy import Greedy
-from code.algorithms.breadth import Breadth_first1
+from code.algorithms.breadth import Breadth_first
 
 
 # Global variable for the total steps per solved game, game with smallest amount of steps, steps from the smallest game
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         for run in range(args.runs):
 
             # Initialize instance of class rushhour
-            rushhourgame = rushhour(args.game)
+            rushhourgame = Rushhour(args.game)
 
             # Initialize greedy class
             game_greedy1 = Greedy(rushhourgame)
@@ -103,7 +103,7 @@ if __name__ == "__main__":
         for run in range(args.runs):
 
             # initialize instance of class rushhour
-            rushhourgame = rushhour(args.game)
+            rushhourgame = Rushhour(args.game)
 
             game_greedy2 = Greedy(rushhourgame)
 
@@ -127,10 +127,10 @@ if __name__ == "__main__":
     elif args.algorithm == 'breadth':
         
         # initialize instance of class rushhour
-        rushhourgame = rushhour(args.game)
+        rushhourgame = Rushhour(args.game)
 
         # Initialize breadth first algo class
-        game_breadth = Breadth_first1(args.game,0)
+        game_breadth = Breadth_first(args.game,0)
 
         # Run algorithm
         game_breadth.run()

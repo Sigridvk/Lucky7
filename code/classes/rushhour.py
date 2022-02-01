@@ -33,7 +33,7 @@ steps_from_smallest_game = []
 # myPen = turtle.Turtle()
 
 
-class rushhour():
+class Rushhour():
 
     def __init__(self, game):
         """
