@@ -3,3 +3,4 @@ __pycache__
 code/algorithms/breadth_first.py
 main.prov
 __init__.pyc
+output/
