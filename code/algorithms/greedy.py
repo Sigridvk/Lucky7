@@ -4,7 +4,10 @@ breadth.py
 Programmeertheorie
 Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
-- 
+- Contains the class Greedy which holds methods to run the greedy1 and greedy2 algorithm.
+- Algorithms play the game RushHour use random functions and heuristics. 
+- Both algorithms will not undo moves by moving the same car back and forth.
+- Greedy1 will also try to move the red car forward when possible, Greedt2 won't.
 """
 
 from . import randomise
@@ -15,14 +18,23 @@ class Greedy():
 
     def __init__(self, game):
         self._game = game
-        self.blocking_car = ""
-        self._steps = []
-        self._count_steps = 0
-        self._last_step = []
+
+        # Defines the vehicle blocking the red car
+        self._blocking_vehicle = ""
+
+        # Will contain the steps made
+        self._moves = []
+
+        # Will be updated when a move is made 
+        self._count_moves = 0
+
+        # Will contain the last move
+        self._last_move = []
 
 
     def red_car_forward(self):
         """
+        Moves the red car forward if possible.
         """
         
         # Define coordinate right to red car
@@ -35,32 +47,37 @@ class Greedy():
                 
                 # move the red car
                 self._game.move('X', 1)
-                self._count_steps += 1
+                self._count_moves += 1
 
+            # Redefine the blocking car and break loop
             else:
-                self.blocking_car = self._game._board[row][i]
+                self._blocking_vehicle = self._game._board[row][i]
                 break
+
 
     def greedy_random_car(self):
         """
         Returns a random car from a dictionary of cars.
         """
+
         return random.choice(self._game._greedy_cars)
 
 
     def greedy_random_algorithm(self):
         """
         Random algorithm that picks a random car from the given dictionary.
-        The algorithm checks which moves this car can make.
-        Randomly select a move from the possible moves.
+        The algorithm checks which moves this car can make, randomly selects a move from the possible moves.
         Returns a list [car, step], step = 0 if the car can't move. 
         """
         
+        # Pick a car from the board and create the possible moves
         car = self.greedy_random_car()
         moves = randomise.check_move(car, self._game.dict, self._game._board)
 
         if moves:
-            step = randomise.random_move(moves)
+
+            # Pick one step from the 
+            move = randomise.random_move(moves)
 
             # Append all cars to the list after a move has been made
             all_cars = self._game._greedy_cars_all
@@ -68,79 +85,100 @@ class Greedy():
             self._game._greedy_cars = all_cars
 
         else:
-            step = 0
+            move = 0
 
             # Remove car from list when car could not move
             self._game._greedy_cars.remove(car)
-        return [car, step]
+        return [car, move]
 
 
     def run_random_greedy1(self):
         """
+        Runs the greedy algorithm WITHOUT moving the red car forward when possible.
         """
 
         self._game.create_board()
-        car = ""
+        vehicle = ""
+
+        # While loop will break when game is solved
         while not self._game.solved():
 
             self._game.create_board()
-
             if self._game.solved():
                 break
-
+                
+            # Pick a vehicle and a move
             move_game = self.greedy_random_algorithm()
-            step = move_game[1]
-            car = move_game[0]
+            move = move_game[1]
+            vehicle = move_game[0]
 
             # If the step-size is 0, begin again, else move that car
-            if step == 0:
+            if move == 0:
                 pass
-            elif move_game == self._last_step:
+
+            # Don't make the move if it has just been made
+            elif move_game == self._last_move:
                 pass
+
+            # Move the vehicle
             else:
-                self._game.move(car, step)
+                self._game.move(vehicle, move)
 
                 # Save last step so that no move back will be made
-                self._last_step = [car, (step*-1)]
+                self._last_move = [vehicle, (move*-1)]
 
-                self._count_steps += 1
-                self._steps.append((car, step))
+                # Count the steps
+                self._count_moves += 1
+
+                # Save move
+                self._moves.append((vehicle, move))
     
 
     def run_random_greedy2(self):
         """
+        Runs the greedy algorithm BY moving the red car forward when possible.
         """
         
         self._game.create_board()
-        car = ""
+        vehicle = ""
 
+        # While loop will break when game is solved
         while not self._game.solved():
 
             self._game.create_board()
 
-            if car == self.blocking_car:
+            # If the current vehicle was blocking the red car, try to move the red car forward
+            if vehicle == self._blocking_vehicle:
                 self.red_car_forward()
 
             if self._game.solved():
                 break
-
+            
+            # Pick a vehicle and a move
             move_game = self.greedy_random_algorithm()
-            step = move_game[1]
-            car = move_game[0]
+            move = move_game[1]
+            vehicle = move_game[0]
 
             # If the step-size is 0, begin again, else move that car
-            if step == 0:
+            if move == 0:
                 pass
-            elif move_game == self._last_step:
+
+            # Don't make the move if it has just been made
+            elif move_game == self._last_move:
                 pass
+
+            # Move the vehicle
             else:
-                self._game.move(car, step)
+                self._game.move(vehicle, move)
 
                 # Save last step so that no move back will be made
-                self._last_step = [car, (step*-1)]
+                self._last_move = [vehicle, (move*-1)]
 
-                self._count_steps += 1
-                self._steps.append((car, step))
+                # Count the steps
+                self._count_moves += 1
+
+                # Save move
+                self._moves.append((vehicle, move))
 
 
 

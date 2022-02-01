@@ -84,16 +84,16 @@ if __name__ == "__main__":
             game_greedy1.run_random_greedy1()
 
             # Check whether the current game is run in the least amount of steps
-            if smallest_amount_steps == None or smallest_amount_steps > game_greedy1._count_steps:
+            if smallest_amount_steps == None or smallest_amount_steps > game_greedy1._count_moves:
                 
                 # Redefine smallest_amount_steps and save the steps from this game
-                smallest_amount_steps = game_greedy1._count_steps
+                smallest_amount_steps = game_greedy1._count_moves
                 steps_from_smallest_game = rushhourgame.moves
             
-            # save_steps_smallest_game(smallest_amount_steps, steps_from_smallest_game,  game_greedy1._count_steps)
+            # save_steps_smallest_game(smallest_amount_steps, steps_from_smallest_game,  game_greedy1._count_moves)
 
             # Add total steps of solved game to list
-            solved_games.append(game_greedy1._count_steps)
+            solved_games.append(game_greedy1._count_moves)
 
         # Save data to output files
         save_data.save_data(steps_from_smallest_game, solved_games, args.game, args.algorithm)
@@ -111,14 +111,14 @@ if __name__ == "__main__":
             game_greedy2.run_random_greedy2()
 
             # Check whether the current game is run in the least amount of steps
-            if smallest_amount_steps == None or smallest_amount_steps > game_greedy2._count_steps:
+            if smallest_amount_steps == None or smallest_amount_steps > game_greedy2._count_moves:
                 
                 # Redefine smallest_amount_steps and save the steps from this game
-                smallest_amount_steps = game_greedy2._count_steps
+                smallest_amount_steps = game_greedy2._count_moves
                 steps_from_smallest_game = rushhourgame.moves
 
             # add total steps of solved game to list
-            solved_games.append(game_greedy2._count_steps)
+            solved_games.append(game_greedy2._count_moves)
         
         # Save data to output files
         save_data.save_data(steps_from_smallest_game, solved_games, args.game, args.algorithm)
