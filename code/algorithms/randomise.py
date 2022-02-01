@@ -151,18 +151,18 @@ def run_algorithm(game, runs):
         rushhourgame = Rushhour(game)
         step_counter = 0
 
-        # Infinite loop to play game, breaks when solution is found
+    # Infinite loop to play game, breaks when solution is found
         while True:
 
             # Initialize begin state board
             board = rushhourgame.create_board()
 
-            # Check if the current game is solved, if so, break. Append total steps to list
+                # Check if the current game is solved, if so, break. Append total steps to list
             if rushhourgame.solved():
                 solved_games.append(step_counter)
                 break
-            
-            # Call first algorithm to decide which car to move
+                
+                # Call first algorithm to decide which car to move
             move_game = random_algorithm(rushhourgame.dict, board)
             step = move_game[1]
             car = move_game[0]
@@ -182,5 +182,4 @@ def run_algorithm(game, runs):
             steps_from_smallest_game = rushhourgame.moves
 
     return [steps_from_smallest_game, solved_games]
-    
     
