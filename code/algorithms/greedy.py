@@ -34,7 +34,9 @@ class Greedy():
 
     def red_car_forward(self):
         """
+        Takes no parameters other than self.
         Moves the red car forward if possible.
+        Returns nothing.
         """
         
         # Define coordinate right to red car
@@ -57,6 +59,7 @@ class Greedy():
 
     def greedy_random_car(self):
         """
+        Takes no parameters other than self.
         Returns a random car from a dictionary of cars.
         """
 
@@ -65,6 +68,7 @@ class Greedy():
 
     def greedy_random_algorithm(self):
         """
+        Takes no parameters other than self.
         Random algorithm that picks a random car from the given dictionary.
         The algorithm checks which moves this car can make, randomly selects a move from the possible moves.
         Returns a list [car, step], step = 0 if the car can't move. 
@@ -94,7 +98,9 @@ class Greedy():
 
     def run_random_greedy1(self):
         """
+        Takes no parameters other than self.
         Runs the greedy algorithm WITHOUT moving the red car forward when possible.
+        Returns nothing.    
         """
 
         self._game.create_board()
@@ -136,7 +142,9 @@ class Greedy():
 
     def run_random_greedy2(self):
         """
+        Takes no parameters other than self.
         Runs the greedy algorithm BY moving the red car forward when possible.
+        Returns nothing.
         """
         
         self._game.create_board()
