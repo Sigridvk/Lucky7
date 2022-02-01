@@ -37,6 +37,7 @@ def run_information(df, path, algorithm):
 
     # Write mean and median to an outputfile (dit moet anders)
     df2.to_csv(f"{path}/run_information_{algorithm}_{game_name}.csv", index=False)
+    # df2.to_csv(f"{path}/run_information_{game_name}.csv", index=False)
 
 
 def bar_chart_large_range(df, game_name, path, algorithm):

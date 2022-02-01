@@ -35,7 +35,7 @@ steps_from_smallest_game = []
 
 class rushhour():
 
-    def __init__(self, output_file, game):
+    def __init__(self, game):
         """
         Initializes the RushHour game by creating an empty list for the moves of the vehicles and writing the information of
         the begin-state of the gameboard to a nested dictionary.
@@ -45,9 +45,7 @@ class rushhour():
 
         # List for moves of the vehicles
         self.moves = []
-
         self._board = []
-        # self.steps_from_smallest_game = []
 
         # Define game file
         file = f'gameboards/{game}.csv'
@@ -63,16 +61,10 @@ class rushhour():
         self.dict = {}
         for row in list(reader)[1:]:
             key = row[0]
-            # self.dict[key] = {"orientation": row[1], "col": int(row[2]), "row": int(row[3]),"length": int(row[4])}
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
         
         self._greedy_cars = list(self.dict.keys())
-        # self._greedy_cars.remove("X")
-
         self._greedy_cars_all = list(self.dict.keys())
-        # self._greedy_cars_all.remove("X")
-
-        # print(self._greedy_cars)
         self._path = ""
 
 
