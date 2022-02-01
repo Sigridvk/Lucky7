@@ -20,10 +20,10 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 
 ## Run the program
 Roep het programma op deze manier aan:
-`python3 rushhour.py -g GAME -a ALGORITHM [-n NUMER_OF_RUNS]`
+`python3 main.py -g GAME -a ALGORITHM [-n NUMER_OF_RUNS]`
 
 Bijvoorbeeld:
-`python3 rushhour.py -g Rushhour6x6_1 -a random -n 1000`
+`python3 main.py -g Rushhour6x6_1 -a random -n 1000`
 
 De verschillende games staan in de map Lucky7/gameboards.
 
