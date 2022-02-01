@@ -3,3 +3,4 @@ output/
 .DS_Store
 code/algorithms/breadth_first.py
 main.prov
+__init__.pyc
