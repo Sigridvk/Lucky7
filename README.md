@@ -111,10 +111,10 @@ Voorbeeld van een staafdiagram met een grote bin-spreiding:
 <img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/large_range_bins_greedy1_greedy1_Rushhour6x6_2.png" width="250" />
 
 Voorbeeld van een staafdiagram met een kleine bin-spreiding:
-<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/data_visualisation%20-%20greedy1_Rushhour6x6_3/small_range_bins_greedy1_greedy1_Rushhour6x6_3.png" />
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/small_range_bins_greedy1_greedy1_Rushhour6x6_2.png"/>
 
 Voorbeeld van bestand met de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen:
-<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/run_informatie.png" width="250" />
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/run_informatie.png" width="250" />
 
 ## Auteurs
 - Luna Ellinger
