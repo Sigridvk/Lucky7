@@ -17,6 +17,24 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 12x12: game 7                                      
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour12x12_1.jpg" width="250" />
 
+## Aan de slag
+### Vereisten
+In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
+
+```
+pip install -r requirements.txt
+```
+
+### Structuur
+
+De hierop volgende lijst beschrijft de belangrijkste mappen en files in het project, en waar je ze kan vinden:
+
+- **/code**: bevat alle code van dit project
+  - **/code/algorithms**: bevat de code voor algoritmes
+  - **/code/classes**: bevat de Rushhour class
+  - **/code/visualisation**: bevat de code om een oplossing the visualiseren in Turtle en om de output te visualiseren
+- **/gameboards**: bevat de verschillende gameboards die hierboven zijn benoemd
+- **/output**: bevat voor ieder algoritme een mapje met alle gevonden resultaten
 
 ## Run the program
 Roep het programma op deze manier aan:
@@ -93,3 +111,8 @@ Voorbeeld van een staafdiagram met een kleine bin-spreiding:
 
 Voorbeeld van bestand met de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/run_informatie.png" width="250" />
+
+## Auteurs
+- Luna Ellinger
+- Vanja Misuric-Ramljak
+- Sigrid van Klaveren
