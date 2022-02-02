@@ -104,7 +104,7 @@ class Breadth_first():
             self._rushhourgame2.move(car, step)
             self._rushhourgame2.create_board()
 
-            # Prints depth once arrived at new depth
+            # Saves the depth once arrived at new depth
             if len(all_steps) > self.__depth:
                 self.__depth = copy.deepcopy(len(all_steps))
 
