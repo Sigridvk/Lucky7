@@ -77,7 +77,7 @@ Deze zijn respectievelijk aan te roepen in de command line als volgt:
 ## Output
 Het aantal zetten dat wordt genomen om tot een oplossing van de game te komen, wordt voor alle runs naar een output-bestand geschreven in de map 'Lucky7/output/{algoritme}'. Het bestand wordt opgeslagen met behulp van de game-naam: 'output_moves_{algoritme}_{game_naam}.csv'. Bijvoorbeeld: 'output_moves_greedy1_Rushhour6x6_2.csv'.
 
-Alle zetten die genomen worden in de best gevonden oplossing, worden opgeslagen in de output-map van het desbetreffende algoritme onder de naam: 'output_moves_{algortime}_{game_naam}.csv'. Bijvoorbeeld: 'output_moves_random_Rushhour6x6_1.csv'.
+Alle zetten die genomen worden in de best gevonden oplossing, worden opgeslagen in de output-map van het desbetreffende algoritme onder de naam: `output_moves_{algortime}_{game_naam}.csv`. Bijvoorbeeld: `output_moves_random_Rushhour6x6_1.csv`.
 
 ## Visualise data
 Om de data te visualiseren kunnen de programma's 'draw.py' en 'data_visualisation.py' gebruikt worden. Deze staan in de map Lucky7/code/visualisation.
@@ -89,23 +89,23 @@ Deze programma's moeten beiden via Visual Studio Code worden aangeroepen. Rechts
 ### draw.py
 draw.py creëert met behulp van de een tool genaamd 'Turtle' een spelbord waarin de voertuigen worden aangegeven met kleuren.
 Hiervoor wordt het bestand gebruikt waarin de moves staan die tot een oplossing leiden. Dit bestand wordt gegenereerd wanneer het hoofdprogramma (main.py) met een van de algoritmes wordt aangeroepen.
-Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de naam: `output_moves_{algoritme}_{spel}.csv`. Bijvoorbeeld: `output_moves_greedy1_Rushhour6x6_2.csv`. 
+Wanneer `random` `greedy1` of `greedy2` wordt aangeroepen krijgt het bestand de naam: `output_moves_{algoritme}_{spel}.csv`. Bijvoorbeeld: `output_moves_greedy1_Rushhour6x6_2.csv`. 
 
 Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven.
-Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
+Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: `best_solution_{game}.csv`. Bijvoorbeeld: `best_solution_Rushhour6x6_2.csv`. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
 
 Een voorbeeld van een spelbord in Turtle:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/turtle_draw.png" width="250" />
 
 ### data_visualisation.py
 data_visualisation.py creëert met behulp van Matplotlib twee staafdiagrammen en een bestand waarin de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen.
-Hiervoor wordt het bestand gebruikt waarin het aantal stappen tot een oplossing per run van het algoritme. Dit bestand wordt alleen gegenereerd wanneer 'greedy1', 'greedy2' of 'random' het spel oplost. 
-Het bestand heeft de naam: 'amount_steps_{algoritme}_{spel}.csv'. Bijvoorbeeld: 'amount_steps_greedy1_Rushhour6x6_2.csv'.
+Hiervoor wordt het bestand gebruikt waarin het aantal stappen tot een oplossing per run van het algoritme. Dit bestand wordt alleen gegenereerd wanneer `greedy1`, `greedy2` of `random` het spel oplost. 
+Het bestand heeft de naam: `amount_steps_{algoritme}_{spel}.csv`. Bijvoorbeeld: `amount_steps_greedy1_Rushhour6x6_2.csv`.
 
 Op de x-as van de staafdiagrammen staat de frequentie van het aantal stappen, en op de y-as staan bins met het aantal stappen. 
 Er worden automatisch twee verschillende bestanden gegenereerd. Een waarvan de bin-spreiding loopt van het 0 tot aan het maximaal aantal stappen en een ander waarin deze spreiding door vier is gedeeld. Deze keuze is gemaakt omdat het dan beter zichtbaar is hoe de werkelijke verdeling van stappen is.
 
-Deze bestanden worden allemaal geschreven naar de map van het algoritme in de map output met de naam: 'data_visualisation - {algoritme}_{game}'. Bijvoorbeeld 'data_visualisation - greedy1_Rushhour6x6_2'.
+Deze bestanden worden allemaal geschreven naar de map van het algoritme in de map output met de naam: `data_visualisation - {algoritme}_{game}`. Bijvoorbeeld `data_visualisation - greedy1_Rushhour6x6_2`.
 
 Voorbeeld van een staafdiagram met een grote bin-spreiding:
 
