@@ -109,15 +109,15 @@ Deze bestanden worden allemaal geschreven naar de map van het algoritme in de ma
 
 Voorbeeld van een staafdiagram met een grote bin-spreiding:
 
-<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/large_range_bins_greedy1_greedy1_Rushhour6x6_2.png" width="500" />
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/large_range_bins_greedy1_greedy1_Rushhour6x6_2.png" width="300" />
 
 Voorbeeld van een staafdiagram met een kleine bin-spreiding:
 
-<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/small_range_bins_greedy1_greedy1_Rushhour6x6_2.png" width="500"/>
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/small_range_bins_greedy1_greedy1_Rushhour6x6_2.png" width="300"/>
 
 Voorbeeld van bestand met de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen:
 
-<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/run_informatie.png"  width="500" />
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/run_informatie.png"  width="300" />
 
 ## Auteurs
 - Luna Ellinger
