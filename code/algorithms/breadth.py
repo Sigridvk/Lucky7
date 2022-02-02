@@ -4,49 +4,44 @@ breadth.py
 Programmeertheorie
 Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
-- 
+- Contains the class Breadth_first, which is used to run a breadth first algorithm.
+- Class is initialized with a game name
+- The class will create a queue with all possible states of the game
 """
 
 import copy
 import queue
-from time import sleep
 from ..classes.rushhour import Rushhour
 import randomise
 import csv
-import re
-import datetime
 
 class Breadth_first():
 
-    def __init__(self, game, depth = 4):
-        """
-        """
-
+    def __init__(self, game):
+        
+        # Create two rushhourgame instances
         self._game = game
         self._rushhourgame = Rushhour(game)
-        self._depth = depth
+        self._rushhourgame2 = Rushhour(game)
+        
+        # An archive to memorize which states have been visited
         self._archive = set()
-
+        
+        # A queue for all the possible states
         self._queue_states = queue.Queue()
-        self._board = copy.deepcopy(self._rushhourgame.create_board())
         
-        self._current_board = self._board
+        # Add the begin board to the queue
         self._queue_states.put({0:self._rushhourgame.dict})
+        self._rushhourgame.create_board()
         
-        self._state = self._board
-
         # A variable that is used for printing the depth of the search
         self.__depth = 0
 
-        # An empty set to memorize unique boards
-        self._unique_boards = ()
-
     
-    def all_moves(self, last_step):
+    def all_moves(self):
         """
         Checks all moves that can be made from a certain state.
         Returns a list with the moves.
-        Takes as parameter last_step so that this step will not be made.
         """
 
         # Create empty list for moves
@@ -54,10 +49,7 @@ class Breadth_first():
 
         board = self._rushhourgame.create_board()
 
-        # (Heb je het bord niet al door de bovenstaande regel code?)
-        board = self._rushhourgame._board
-
-        # For-loop over all cars in dict
+        # For-loop over all cars in dict to check how they can move
         for car in self._rushhourgame.dict:
             moves = randomise.check_move(car, self._rushhourgame.dict, board)
             
@@ -71,33 +63,22 @@ class Breadth_first():
 
     def get_next_state(self):
         """
+        Returns the next state from the queue
         """
         return self._queue_states.get()
 
 
     def build_children(self, all_steps):
         """
+        Function that creates all child states from a certain state. 
+        Appends these children to the queue.
+        Gets a list of all steps that have to be taken to get a certain state.
         """
 
-        # Get last step that has been made 
-        # (Kan misschien later weggehaald worden wanneer we staten op gaan slaan)
-        length = len(all_steps) - 3
-        last_step = all_steps[length:]
-        last_step = last_step[0]
+        # Get all possible moves
+        children = self.all_moves()
 
-        if last_step[0] == '_':
-            str1 = ""
-            last_step= last_step[1:]
-            for i in last_step:
-                str1 += i
-            last_step = str1
-
-        # Create children from current state (possible steps)
-        children = self.all_moves(last_step)
-
-        # self._depth += 1
-
-        # For-loop over children
+        # Loop over each child to create the state
         for child in children:
 
             # Define car and step
@@ -114,10 +95,9 @@ class Breadth_first():
             path_ = listToStr
             path_ += '_' + child1
 
-            # In rushhourgame2 the children (moves) 
-            self._rushhourgame2 = copy.deepcopy(self._rushhourgame)
+            # Deepcopy the dict of the current state 
+            self._rushhourgame2.dict = copy.deepcopy(self._rushhourgame.dict)
 
-            # 
             self._rushhourgame2._path += path_
 
             # Moves vehicle by changing the dict
@@ -127,9 +107,9 @@ class Breadth_first():
             # Prints depth once arrived at new depth
             if len(all_steps) > self.__depth:
                 self.__depth = copy.deepcopy(len(all_steps))
-             
+
             # Checks whether solution is found
-            if self._rushhourgame.solved():          
+            if self._rushhourgame.solved():
 
                 # Write best solution to an output file
                 with open(f'output/breadth/best_solution_{self._game}.csv','w') as out:
@@ -144,9 +124,11 @@ class Breadth_first():
                         step_ = element[1:]
                         writer.writerow([car_, step_])
                 break      
-
+            
+            # Create a string of the current state
             bord = board_to_string(self._rushhourgame2)
         
+            # Check if this board is already in the archive, if not add it to the queue
             if bord not in self._archive:
                 self._queue_states.put({path_:self._rushhourgame2.dict})
                 self._archive.add(bord)
@@ -156,18 +138,17 @@ class Breadth_first():
         """
         Checks whether game is solved.
         """
-
+        self._rushhourgame.create_board()
         if self._rushhourgame.solved():
             return True
 
 
     def run(self):
         """
+        Runs the Breadth First algorithm
         """
 
-        all_steps = ""
-
-        # 
+        # Run the algorithm as long as the queue is not empty
         while self._queue_states:
             if self.solved():
                 break
@@ -175,7 +156,7 @@ class Breadth_first():
             # Gets next state 
             state_dict = self.get_next_state()
 
-            # Get key of next state (key is the path)
+            # Get all the steps that have been taken so far
             all_steps = list(state_dict.keys())[0]
             all_steps = str(all_steps)
 
@@ -193,6 +174,9 @@ class Breadth_first():
 
 
 def board_to_string(game):
+    """
+    Function to create a string of a certain board.
+    """
     bord = ""
     for i in range(len(game._board)):
         for j in range(len(game._board)):

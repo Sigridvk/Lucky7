@@ -127,7 +127,7 @@ if __name__ == "__main__":
         rushhourgame = Rushhour(args.game)
 
         # Initialize breadth first algo class
-        game_breadth = Breadth_first(args.game,0)
+        game_breadth = Breadth_first(args.game)
 
         # Run algorithm
         game_breadth.run()
