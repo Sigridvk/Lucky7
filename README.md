@@ -71,7 +71,7 @@ Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de 
 Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv'. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
 
 Een voorbeeld van een spelbord in Turtle:
-<img src="https://www.dropbox.com/s/w5q3rhn29xgfh5r/turtle_draw.png?dl=0" width="250" />
+<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/turtle_draw.png" width="250" />
 
 ### data_visualisation.py
 data_visualisation.py creëert met behulp van Matplotlib twee staafdiagrammen en een bestand waarin de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen.
@@ -82,13 +82,10 @@ Op de x-as van de staafdiagrammen staat de frequentie van het aantal stappen, en
 Er worden automatisch twee verschillende bestanden gegenereerd. Een waarvan de bin-spreiding loopt van het 0 tot aan het maximaal aantal stappen en een ander waarin deze spreiding door vier is gedeeld. Deze keuze is gemaakt omdat het dan beter zichtbaar is hoe de werkelijke verdeling van stappen is.
 
 Voorbeeld van een staafdiagram met een grote bin-spreiding:
-<img src="https://www.dropbox.com/s/uye4bzv1vcxah0r/large_range_bins_greedy1_greedy1_Rushhour6x6_3.png?dl=0" width="250" />
+<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/data_visualisation%20-%20greedy1_Rushhour6x6_3/large_range_bins_greedy1_greedy1_Rushhour6x6_3.png" width="250" />
 
 Voorbeeld van een staafdiagram met een kleine bin-spreiding:
-<img src="https://www.dropbox.com/s/zqvdfk2d5f787o5/small_range_bins_greedy1_greedy1_Rushhour6x6_3.png?dl=0" width="250" />
+<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/data_visualisation%20-%20greedy1_Rushhour6x6_3/small_range_bins_greedy1_greedy1_Rushhour6x6_3.png" />
 
 Voorbeeld van bestand met de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen:
-<img src="https://www.dropbox.com/s/3yhf2u2r4eznkpl/run_informatie.png?dl=0" width="250" />
-
-
-
+<img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/run_informatie.png" width="250" />

@@ -28,19 +28,6 @@ smallest_amount_steps = None
 steps_from_smallest_game = []
 
 
-# WORDT NOG NIET GEBRUIKT
-def save_steps_smallest_game(smallest_amount_steps, steps_from_smallest_game, stepcount):
-    """
-    """
-
-    # Check whether the current game is run in the least amount of steps
-    if smallest_amount_steps == None or smallest_amount_steps > stepcount:
-        
-        # Redefine smallest_amount_steps and save the steps from this game
-        smallest_amount_steps = stepcount
-        steps_from_smallest_game = rushhourgame.moves
-
-
 if __name__ == "__main__":
 
     # Create a command line argument parser
@@ -94,8 +81,6 @@ if __name__ == "__main__":
                 # Redefine smallest_amount_steps and save the steps from this game
                 smallest_amount_steps = game_greedy1._count_moves
                 steps_from_smallest_game = rushhourgame.moves
-            
-            # save_steps_smallest_game(smallest_amount_steps, steps_from_smallest_game,  game_greedy1._count_moves)
 
             # Add total steps of solved game to list
             solved_games.append(game_greedy1._count_moves)
