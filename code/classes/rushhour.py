@@ -13,14 +13,6 @@ import math
 import sys
 import turtle
 
-# # sys.path.append("../")
-# from visualisation.draw_old import draw
-
-# # Variables to display the board in turtle
-# # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
-# window = turtle.Screen()
-# myPen = turtle.Turtle()
-
 
 class Rushhour():
 
@@ -121,25 +113,7 @@ class Rushhour():
         # Vertical
         else:
             # Redefine row coordinate vehicle
-            self.dict[car]['row'] -= steps
-    
-
-    # # DEZE FUNCTIE WEG?
-    # def display_board(self):
-    #     """
-    #     Prints the board to the terminal.
-    #     """
-    #     board = self._board
-    #     window = turtle.Screen()
-    #     myPen = turtle.Turtle()
-    #     # # # show the board in the terminal with lists in a list
-    #     # for row in board:
-    #     #     print(row)
-    #     # print()
-
-    #     # # # show the board in turtle, 30 = width squares, 6 = length board
-    #     draw(board, myPen, window, 1)
-    #     window.update()
+            self.dict[car]['row'] -= step
 
 
     def solved(self):
