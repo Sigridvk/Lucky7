@@ -17,6 +17,24 @@ Rush Hour is een ogenschijnlijk eenvoudig puzzeltje met een verrassend uitdagend
 12x12: game 7                                      
 <img src="https://theorie.mprog.nl/course/cases/Rush%20Hour/Rushhour12x12_1.jpg" width="250" />
 
+## Aan de slag
+### Vereisten
+In requirements.txt staan alle benodigde packages om de code succesvol te draaien. Deze zijn gemakkelijk te installeren via pip dmv. de volgende instructie:
+
+```
+pip install -r requirements.txt
+```
+
+### Structuur
+
+De hierop volgende lijst beschrijft de belangrijkste mappen en files in het project, en waar je ze kan vinden:
+
+- **/code**: bevat alle code van dit project
+  - **/code/algorithms**: bevat de code voor algoritmes
+  - **/code/classes**: bevat de Rushhour class
+  - **/code/visualisation**: bevat de code om een oplossing the visualiseren in Turtle en om de output te visualiseren
+- **/gameboards**: bevat de verschillende gameboards die hierboven zijn benoemd
+- **/output**: bevat voor ieder algoritme een mapje met alle gevonden resultaten
 
 ## Run the program
 Roep het programma op deze manier aan:
@@ -62,13 +80,19 @@ Het aantal zetten dat wordt genomen om tot een oplossing van de game te komen, w
 Alle zetten die genomen worden in de best gevonden oplossing, worden opgeslagen in de output-map van het desbetreffende algoritme onder de naam: 'output_moves_{algortime}_{game_naam}.csv'. Bijvoorbeeld: 'output_moves_random_Rushhour6x6_1.csv'.
 
 ## Visualise data
-Om de data te visualiseren kunnen de programma's 'draw.py' en 'data_visualisation.py' gebruikt worden. Deze staan in de map Lucky7/code/visualisation. 
+Om de data te visualiseren kunnen de programma's 'draw.py' en 'data_visualisation.py' gebruikt worden. Deze staan in de map Lucky7/code/visualisation.
+
+## Run draw.py or data_visualisation.py
+Deze programma's moeten beiden via Visual Studio Code worden aangeroepen. Rechtsbovenin staat een soort playbutton/driehoekje, 'Run Python File'. Als men daarop klikt onstaat er een soortgelijk pad in de terminal: `/opt/homebrew/bin/python3 "/Users/sigridvanklaveren/Documenten/Uva minor programmeren/Programmeertheorie/Lucky7/code/visualisation/draw.py"`. Dit is een voorbeeld van het bestand draw.py. Hieraan voegt men nog het volgende aan toe: `-f FOLDER -i INPUT_FILE -g GAME`. Bijvoorbeeld: `-f greedy1 -i output_moves_greedy1_Rushhour6x6_1 -g Rushhour6x6_1`.
+
 
 ### draw.py
-draw.py creëert met behulp van de een tool genaamd 'Turtle' een speelbord waarin de voertuigen worden aangegeven met kleuren.
+draw.py creëert met behulp van de een tool genaamd 'Turtle' een spelbord waarin de voertuigen worden aangegeven met kleuren.
 Hiervoor wordt het bestand gebruikt waarin de moves staan die tot een oplossing leiden. Dit bestand wordt gegenereerd wanneer het hoofdprogramma (main.py) met een van de algoritmes wordt aangeroepen.
-Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de naam: 'output_moves_{algoritme}_{spel}.csv. Bijvoorbeeld: 'output_moves_greedy1_Rushhour6x6_2.csv'. Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven.
-Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv'. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
+Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de naam: `output_moves_{algoritme}_{spel}.csv`. Bijvoorbeeld: `output_moves_greedy1_Rushhour6x6_2.csv`. 
+
+Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven.
+Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
 
 Een voorbeeld van een spelbord in Turtle:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/turtle_draw.png" width="250" />
@@ -81,6 +105,8 @@ Het bestand heeft de naam: 'amount_steps_{algoritme}_{spel}.csv'. Bijvoorbeeld: 
 Op de x-as van de staafdiagrammen staat de frequentie van het aantal stappen, en op de y-as staan bins met het aantal stappen. 
 Er worden automatisch twee verschillende bestanden gegenereerd. Een waarvan de bin-spreiding loopt van het 0 tot aan het maximaal aantal stappen en een ander waarin deze spreiding door vier is gedeeld. Deze keuze is gemaakt omdat het dan beter zichtbaar is hoe de werkelijke verdeling van stappen is.
 
+Deze bestanden worden allemaal geschreven naar de map van het algoritme in de map output met de naam: 'data_visualisation - {algoritme}_{game}'. Bijvoorbeeld 'data_visualisation - greedy1_Rushhour6x6_2'.
+
 Voorbeeld van een staafdiagram met een grote bin-spreiding:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/data_visualisation%20-%20greedy1_Rushhour6x6_3/large_range_bins_greedy1_greedy1_Rushhour6x6_3.png" width="250" />
 
@@ -89,3 +115,8 @@ Voorbeeld van een staafdiagram met een kleine bin-spreiding:
 
 Voorbeeld van bestand met de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/run_informatie.png" width="250" />
+
+## Auteurs
+- Luna Ellinger
+- Vanja Misuric-Ramljak
+- Sigrid van Klaveren
