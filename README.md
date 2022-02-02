@@ -87,10 +87,12 @@ Deze programma's moeten beiden via Visual Studio Code worden aangeroepen. Rechts
 
 
 ### draw.py
-draw.py creëert met behulp van de een tool genaamd 'Turtle' een speelbord waarin de voertuigen worden aangegeven met kleuren.
+draw.py creëert met behulp van de een tool genaamd 'Turtle' een spelbord waarin de voertuigen worden aangegeven met kleuren.
 Hiervoor wordt het bestand gebruikt waarin de moves staan die tot een oplossing leiden. Dit bestand wordt gegenereerd wanneer het hoofdprogramma (main.py) met een van de algoritmes wordt aangeroepen.
-Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de naam: 'output_moves_{algoritme}_{spel}.csv. Bijvoorbeeld: 'output_moves_greedy1_Rushhour6x6_2.csv'. Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven.
-Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv'. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
+Wanneer 'random' 'greedy1' of 'greedy2' wordt aangeroepen krijgt het bestand de naam: `output_moves_{algoritme}_{spel}.csv`. Bijvoorbeeld: `output_moves_greedy1_Rushhour6x6_2.csv`. 
+
+Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven.
+Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: 'best_solution_{game}.csv. Bijvoorbeeld: 'best_solution_Rushhour6x6_2.csv'. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
 
 Een voorbeeld van een spelbord in Turtle:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/turtle_draw.png" width="250" />
@@ -102,6 +104,8 @@ Het bestand heeft de naam: 'amount_steps_{algoritme}_{spel}.csv'. Bijvoorbeeld: 
 
 Op de x-as van de staafdiagrammen staat de frequentie van het aantal stappen, en op de y-as staan bins met het aantal stappen. 
 Er worden automatisch twee verschillende bestanden gegenereerd. Een waarvan de bin-spreiding loopt van het 0 tot aan het maximaal aantal stappen en een ander waarin deze spreiding door vier is gedeeld. Deze keuze is gemaakt omdat het dan beter zichtbaar is hoe de werkelijke verdeling van stappen is.
+
+Deze bestanden worden allemaal geschreven naar de map van het algoritme in de map output met de naam: 'data_visualisation - {algoritme}_{game}'. Bijvoorbeeld 'data_visualisation - greedy1_Rushhour6x6_2'.
 
 Voorbeeld van een staafdiagram met een grote bin-spreiding:
 <img src="file:///Users/lunaellinger/Dropbox%20(HEADHUNTERZ)/Programmeertheorie/data_visualisation%20-%20greedy1_Rushhour6x6_3/large_range_bins_greedy1_greedy1_Rushhour6x6_3.png" width="250" />
