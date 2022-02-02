@@ -110,7 +110,7 @@ def check_move(car, cars_dict, board):
                     moves_list.append( -1 * (i - row_down + 1))
                 else:
                     break
-                
+
     return moves_list
 
 
@@ -146,12 +146,15 @@ def run_algorithm(game, runs):
     steps_from_smallest_game = []
 
     # Loop through algorithm n times
-    for i in range(runs):
+    for run in range(runs):
 
         rushhourgame = Rushhour(game)
         step_counter = 0
 
-    # Infinite loop to play game, breaks when solution is found
+        if (run % 500) == 0:
+            print(run)
+
+        # Infinite loop to play game, breaks when solution is found
         while True:
 
             # Initialize begin state board

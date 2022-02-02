@@ -4,21 +4,20 @@
  Programmeertheorie
  Sigrid van Klaveren, Vanja Misuric-Ramljak and Luna Ellinger
 
- - Contains the class Rushhour.
+ - Contains the class Rushhour which holds methods that represent a RushHour game.
 """
  
 import os
-import copy 
 import csv
 import math
 import sys
 import turtle
 
-# sys.path.append("../")
-# from visualisation.draw import draw
+# # sys.path.append("../")
+# from visualisation.draw_old import draw
 
-# Variables to display the board in turtle
-# Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
+# # Variables to display the board in turtle
+# # Source: https://www.101computing.net/rush-hour-backtracking-algorithm/
 # window = turtle.Screen()
 # myPen = turtle.Turtle()
 
@@ -30,7 +29,6 @@ class Rushhour():
         Initializes the RushHour game by creating an empty list for the moves of the vehicles and writing the information of
         the begin-state of the gameboard to a nested dictionary.
         Takes the output filename and filename of the game as parameter that was specified at the command line.
-        Returns nothing.
         """
 
         # List for moves of the vehicles
@@ -40,9 +38,8 @@ class Rushhour():
         # Define game file
         file = f'gameboards/{game}.csv'
 
-        index_x = game.find('x')
-
         # Size grid is defined by 8th character of the gamename, example: Rushhour6x6_1
+        index_x = game.find('x')
         self.size_board = int(game[8:index_x])
 
         reader = csv.reader(open(file))
@@ -53,16 +50,18 @@ class Rushhour():
             key = row[0]
             self.dict[key] = {"orientation": row[1], "col": (int(row[2]) - 1), "row": (int(row[3]) - 1),"length": int(row[4])}
         
+        # Define lists that will be used by the greedy algorithms
+        # A list from which cars will be removes which surely can't move
         self._greedy_cars = list(self.dict.keys())
+
+        # A list which will always contain all cars
         self._greedy_cars_all = list(self.dict.keys())
         self._path = ""
 
 
     def create_board(self):
             """
-            Takes no parameter other than self.
             Creates the gameboard by extracting data from the nested dictionary with information about the state of the board.
-            Takes no parameters other than self.
             Returns the gameboard.
             """
 
@@ -125,23 +124,22 @@ class Rushhour():
             self.dict[car]['row'] -= steps
     
 
-    def display_board(self):
-        """
-        Prints the board to the terminal.
-        Takes the board as parameter.
-        Returns nothing.
-        """
-        board = self._board
-        # window = turtle.Screen()
-        # myPen = turtle.Turtle()
-        # # # show the board in the terminal with lists in a list
-        for row in board:
-            print(row)
-        print()
+    # # DEZE FUNCTIE WEG?
+    # def display_board(self):
+    #     """
+    #     Prints the board to the terminal.
+    #     """
+    #     board = self._board
+    #     window = turtle.Screen()
+    #     myPen = turtle.Turtle()
+    #     # # # show the board in the terminal with lists in a list
+    #     # for row in board:
+    #     #     print(row)
+    #     # print()
 
-        # # # show the board in turtle, 30 = width squares, 6 = length board
-        # draw(board, myPen, window, 1)
-        # window.update()
+    #     # # # show the board in turtle, 30 = width squares, 6 = length board
+    #     draw(board, myPen, window, 1)
+    #     window.update()
 
 
     def solved(self):

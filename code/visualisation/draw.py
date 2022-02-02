@@ -157,6 +157,7 @@ if __name__ == "__main__":
             # Call the move method from the rushhour object and perform move
             try:
                 rushhourgame.move(car, move)
+                print(row)
             except:
                 print(f"could not perform move: {move} on car: {car}")
                 exit(6)
@@ -168,7 +169,7 @@ if __name__ == "__main__":
                 print(f"Error. Could not create board from rushhourgame object. Did you enter the right game on the commandline?")
                 exit(7)
             
-            # Call the draw function and display the move in turtle
+            # Call the draw function and display the move in turtl
             try:
                 window = turtle.Screen()
                 myPen = turtle.Turtle()
