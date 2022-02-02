@@ -62,7 +62,11 @@ Het aantal zetten dat wordt genomen om tot een oplossing van de game te komen, w
 Alle zetten die genomen worden in de best gevonden oplossing, worden opgeslagen in de output-map van het desbetreffende algoritme onder de naam: 'output_moves_{algortime}_{game_naam}.csv'. Bijvoorbeeld: 'output_moves_random_Rushhour6x6_1.csv'.
 
 ## Visualise data
-Om de data te visualiseren kunnen de programma's 'draw.py' en 'data_visualisation.py' gebruikt worden. Deze staan in de map Lucky7/code/visualisation. 
+Om de data te visualiseren kunnen de programma's 'draw.py' en 'data_visualisation.py' gebruikt worden. Deze staan in de map Lucky7/code/visualisation.
+
+## Run draw.py or data_visualisation.py
+Deze programma's moeten beiden via Visual Studio Code worden aangeroepen. Rechtsbovenin staat een soort playbutton/driehoekje, 'Run Python File'. Als men daarop klikt onstaat er een soortgelijk pad in de terminal: `/opt/homebrew/bin/python3 "/Users/sigridvanklaveren/Documenten/Uva minor programmeren/Programmeertheorie/Lucky7/code/visualisation/draw.py"`. Dit is een voorbeeld van het bestand draw.py. Hieraan voegt men nog het volgende aan toe: `-f FOLDER -i INPUT_FILE -g GAME`. Bijvoorbeeld: `-f greedy1 -i output_moves_greedy1_Rushhour6x6_1 -g Rushhour6x6_1`.
+
 
 ### draw.py
 draw.py creëert met behulp van de een tool genaamd 'Turtle' een speelbord waarin de voertuigen worden aangegeven met kleuren.
