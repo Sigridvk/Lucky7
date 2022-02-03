@@ -95,7 +95,8 @@ Naar dit bestand worden automatisch de moves van de kortste oplossing geschreven
 Wanneer 'breadth' wordt aangeroepen krijgt het bestand de naam: `best_solution_{game}.csv`. Bijvoorbeeld: `best_solution_Rushhour6x6_2.csv`. Naar dit bestand worden altijd de moves van de (de eerste) en de beste oplossing geschreven.
 
 Een voorbeeld van een spelbord in Turtle:
-<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/turtle_draw.png" width="250" />
+
+<img src="https://github.com/Sigridvk/Lucky7/blob/main/doc/turtle_draw.png" width="150" />
 
 ### data_visualisation.py
 data_visualisation.py creëert met behulp van Matplotlib twee staafdiagrammen en een bestand waarin de mediaan, het gemiddelde en het maximaal/minimaal aantal stappen.
