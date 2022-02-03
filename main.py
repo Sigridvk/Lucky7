@@ -40,7 +40,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if len(argv) not in [7,9]:
-        print(len(argv))
         print("Usage: python3 rmain.py -g GAME -a ALGORITHM [-n NUMER_OF_RUNS]")
         exit(1)
 
@@ -69,11 +68,6 @@ if __name__ == "__main__":
 
             # run random greedy algorithm
             game_greedy1.run_random_greedy1()
-
-            # test
-            if (run % 5) == 0:
-                print(run)
-                # print(datetime.datetime.now())
 
             # Check whether the current game is run in the least amount of steps
             if smallest_amount_steps == None or smallest_amount_steps > game_greedy1._count_moves:
